@@ -1,0 +1,749 @@
+{
+    "categories": [
+        {
+            "_id": "popular",
+            "name": "Popular"
+        },
+        {
+            "_id": "appetizer",
+            "name": "Appetizer"
+        },
+        {
+            "_id": "main_course",
+            "name": "Main Course"
+        },
+        {
+            "_id": "dessert",
+            "name": "Dessert"
+        },
+        {
+            "_id": "beverages",
+            "name": "Beverages"
+        }
+    ],
+    "list": [
+        {
+            "category_id": "popular",
+            "items": [
+                {
+                    "_id": "6176686afc13ae4e76000000",
+                    "price": 1.5,
+                    "display_price": 1.5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/0/5616/3744",
+                    "name": "Nectarine and beetroot salad",
+                    "description": "A crisp salad featuring fresh nectarine and beetroot",
+                    "tags": [
+                        "white_cabbage",
+                        "lettuce",
+                        "tomato",
+                        "nectarine",
+                        "beetroot"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000001",
+                    "price": 9,
+                    "display_price": 9,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1/5616/3744",
+                    "name": "Rotini and vinegar salad",
+                    "description": "A crisp salad featuring rotini and vinegar",
+                    "tags": [
+                        "cucumber",
+                        "cress",
+                        "lettuce",
+                        "rotini",
+                        "vinegar"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000002",
+                    "price": 8,
+                    "display_price": 4,
+                    "is_discount": true,
+                    "discount_percent": 50,
+                    "image_url": "https://picsum.photos/id/10/2500/1667",
+                    "name": "Italian seasoning and potato starch salad",
+                    "description": "Italian seasoning and potato starch served on a bed of lettuce",
+                    "tags": [
+                        "lettuce",
+                        "italian_seasoning",
+                        "potato_starch"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000003",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/100/2500/1656",
+                    "name": "Avocado and egg ciabatta",
+                    "description": "Warm ciabatta filled with fresh avocado and free range eggs",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "avocado",
+                        "egg"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000004",
+                    "price": 3,
+                    "display_price": 3,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1000/5626/3635",
+                    "name": "Rosemary and bacon cupcakes",
+                    "description": "Crumbly cupcakes made with dried rosemary and back bacon",
+                    "tags": [
+                        "flour",
+                        "butter",
+                        "egg",
+                        "sugar",
+                        "rosemary",
+                        "bacon"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000005",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1001/5616/3744",
+                    "name": "Chilli and oaty salad",
+                    "description": "A crisp salad featuring scotch bonnet chilli and oaty",
+                    "tags": [
+                        "cucumber",
+                        "lettuce",
+                        "tomato",
+                        "chilli",
+                        "oaty"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000006",
+                    "price": 4,
+                    "display_price": 4,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1002/4312/2868",
+                    "name": "Peppercorn and chilli penne",
+                    "description": "Fresh egg tubular pasta in a sauce made from pink peppercorn and firey chilli",
+                    "tags": [
+                        "tomato",
+                        "onion",
+                        "garlic",
+                        "pasta",
+                        "oregano",
+                        "black_pepper",
+                        "peppercorn",
+                        "chilli"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000007",
+                    "price": 6,
+                    "display_price": 4.8,
+                    "is_discount": true,
+                    "discount_percent": 20,
+                    "image_url": "https://picsum.photos/id/1003/1181/1772",
+                    "name": "Anise and dill stir fry",
+                    "description": "Crunchy stir fry featuring fresh anise and dried dill",
+                    "tags": [
+                        "spices",
+                        "anise",
+                        "dill"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000008",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1004/5616/3744",
+                    "name": "Corn and pudding",
+                    "description": "A rich suet pudding made with baby corn and",
+                    "tags": [
+                        "flour",
+                        "butter",
+                        "water",
+                        "salt",
+                        "onions",
+                        "corn"
+                    ]
+                },
+                {
+                    "_id": "6176686afc13ae4e76000009",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1005/5760/3840",
+                    "name": "Cheese and steak toastie",
+                    "description": "Crisp slices of bread filled with mature cheese and steak",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "cheese",
+                        "steak"
+                    ]
+                }
+            ]
+        },
+        {
+            "category_id": "appetizer",
+            "items": [
+                {
+                    "_id": "617669c5fc13ae7466000000",
+                    "price": 4,
+                    "display_price": 4,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1006/3000/2000",
+                    "name": "Tofu and sweetcorn gyoza",
+                    "description": "Thin pastry cases stuffed with crispy tofu and creamed sweetcorn",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "tofu",
+                        "sweetcorn"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000001",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1008/5616/3744",
+                    "name": "Nectarine and persimmon dumplings",
+                    "description": "Thin pastry cases stuffed with fresh nectarine and persimmon",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "nectarine",
+                        "persimmon"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000002",
+                    "price": 2.2,
+                    "display_price": 2.2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1009/5000/7502",
+                    "name": "Horseradish and sausage dumplings",
+                    "description": "Thin pastry cases stuffed with fresh horseradish and chunky sausage",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "horseradish",
+                        "sausage"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000003",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/101/2621/1747",
+                    "name": "Chilli and apple dumplings",
+                    "description": "Thin pastry cases stuffed with fresh chilli and green apple",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "chilli",
+                        "apple"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000004",
+                    "price": 8,
+                    "display_price": 6.4,
+                    "is_discount": true,
+                    "discount_percent": 40,
+                    "image_url": "https://picsum.photos/id/1010/5184/3456",
+                    "name": "Lemon and chocolate mousse",
+                    "description": "A silky mousse made with tangy lemon and dark chocolate",
+                    "tags": [
+                        "egg",
+                        "cream",
+                        "onions",
+                        "lemon",
+                        "chocolate"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000005",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1011/5472/3648",
+                    "name": "Veal and squash dumplings",
+                    "description": "Thin pastry cases stuffed with veal and fresh squash",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "veal",
+                        "squash"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000006",
+                    "price": 3,
+                    "display_price": 3,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1012/3973/2639",
+                    "name": "Pheasant and chicken parcels",
+                    "description": "Thin filo pastry cases stuffed with pheasant and free range chicken",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "pheasant",
+                        "chicken"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000007",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1013/4256/2832",
+                    "name": "Peppercorn and thyme soup",
+                    "description": "Pink peppercorn and fresh thyme combined into creamy soup",
+                    "tags": [
+                        "garlic",
+                        "peppercorn",
+                        "thyme",
+                        "cream"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000008",
+                    "price": 2,
+                    "display_price": 2,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1014/6016/4000",
+                    "name": "Pesto and potato soup",
+                    "description": "Red pesto and new potato combined into smooth soup",
+                    "tags": [
+                        "garlic",
+                        "pesto",
+                        "potato"
+                    ]
+                },
+                {
+                    "_id": "617669c5fc13ae7466000009",
+                    "price": 1,
+                    "display_price": 1,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1015/6000/4000",
+                    "name": "Bacon and cucumber soup",
+                    "description": "Smoked bacon and fresh cucumber combined into creamy soup",
+                    "tags": [
+                        "garlic",
+                        "bacon",
+                        "cucumber",
+                        "cream"
+                    ]
+                }
+            ]
+        },
+        {
+            "category_id": "main_course",
+            "items": [
+                {
+                    "_id": "61766a54fc13ae5d9c000514",
+                    "price": 7,
+                    "display_price": 7,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1016/3844/2563",
+                    "name": "Peppercorn and pepper sausages",
+                    "description": "Sizzling sausages made from szechuan peppercorn and sweet pepper, served in a roll",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "onions",
+                        "peppercorn",
+                        "pepper"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c000515",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1018/3914/2935",
+                    "name": "Potato and lamb skewers",
+                    "description": "Bamboo skewers loaded with baby new potato and succulent lamb",
+                    "tags": [
+                        "onions",
+                        "potato",
+                        "lamb"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c000516",
+                    "price": 12,
+                    "display_price": 8.4,
+                    "is_discount": true,
+                    "discount_percent": 30,
+                    "image_url": "https://picsum.photos/id/1019/5472/3648",
+                    "name": "Venison and pineapple korma",
+                    "description": "Creamy korma made with venison and fresh pineapple",
+                    "tags": [
+                        "onion",
+                        "peppers",
+                        "garlic",
+                        "ginger",
+                        "tumeric",
+                        "cumin",
+                        "coriander",
+                        "butter",
+                        "sugar",
+                        "cream",
+                        "venison",
+                        "pineapple"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c000517",
+                    "price": 10,
+                    "display_price": 10,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/102/4320/3240",
+                    "name": "Mint and chilli sausages",
+                    "description": "Tasty sausages made from fresh mint and habanero chilli, served in a roll",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "onions",
+                        "mint",
+                        "chilli"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c000518",
+                    "price": 12,
+                    "display_price": 12,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1020/4288/2848",
+                    "name": "Pork and fennel stew",
+                    "description": "Pork and fresh fennel stewed",
+                    "tags": [
+                        "onion",
+                        "salt",
+                        "black pepper",
+                        "potatoes",
+                        "pork",
+                        "fennel"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c000519",
+                    "price": 9,
+                    "display_price": 9,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1021/2048/1206",
+                    "name": "Aubergine and cardamom curry",
+                    "description": "Hot curry made with fried aubergine and black cardamom",
+                    "tags": [
+                        "onion",
+                        "peppers",
+                        "garlic",
+                        "ginger",
+                        "tumeric",
+                        "cumin",
+                        "coriander",
+                        "curry leaf",
+                        "green chilli",
+                        "aubergine",
+                        "cardamom"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c00051a",
+                    "price": 12,
+                    "display_price": 12,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1022/6000/3376",
+                    "name": "Canola oil and coffee salad",
+                    "description": "Canola oil and coffee served on a bed of lettuce",
+                    "tags": [
+                        "lettuce",
+                        "canola oil",
+                        "coffee"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c00051b",
+                    "price": 15,
+                    "display_price": 15,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1023/3955/2094",
+                    "name": "Peppercorn and tofu toastie",
+                    "description": "Hot slices of bread filled with mixed peppercorn and silken tofu",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "peppercorn",
+                        "tofu"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c00051c",
+                    "price": 12,
+                    "display_price": 12,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1024/1920/1280",
+                    "name": "Wheat bran and sole salad",
+                    "description": "Wheat bran and sole served on a bed of lettuce",
+                    "tags": [
+                        "lettuce",
+                        "wheat bran",
+                        "sole"
+                    ]
+                },
+                {
+                    "_id": "61766a54fc13ae5d9c00051d",
+                    "price": 10,
+                    "display_price": 10,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1025/4951/3301",
+                    "name": "Creme fraiche and rabbit salad",
+                    "description": "Creme fraiche and rabbit served on a bed of lettuce",
+                    "tags": [
+                        "lettuce",
+                        "creme fraiche",
+                        "rabbit"
+                    ]
+                }
+            ]
+        },
+        {
+            "category_id": "dessert",
+            "items": [
+                {
+                    "_id": "61766b6efc13ae746600000a",
+                    "price": 6,
+                    "display_price": 6,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1026/4621/3070",
+                    "name": "Date and raspberry muffins",
+                    "description": "Crumbly muffins made with moist date and fresh raspberry",
+                    "tags": [
+                        "flour",
+                        "butter",
+                        "egg",
+                        "sugar",
+                        "date",
+                        "raspberry"
+                    ]
+                },
+                {
+                    "_id": "61766b6efc13ae746600000b",
+                    "price": 6,
+                    "display_price": 6,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1027/2848/4272",
+                    "name": "Lemon and bacon muffins",
+                    "description": "Fluffy muffins made with fresh lemon and streaky bacon",
+                    "tags": [
+                        "flour",
+                        "butter",
+                        "egg",
+                        "sugar",
+                        "lemon",
+                        "bacon"
+                    ]
+                },
+                {
+                    "_id": "61766b6efc13ae746600000c",
+                    "price": 6,
+                    "display_price": 6,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1028/5184/3456",
+                    "name": "Squash and pesto wontons",
+                    "description": "Thin wonton cases stuffed with fresh squash and basil pesto",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "squash",
+                        "pesto"
+                    ]
+                },
+                {
+                    "_id": "61766b6efc13ae746600000d",
+                    "price": 6,
+                    "display_price": 3,
+                    "is_discount": true,
+                    "discount_percent": 50,
+                    "image_url": "https://picsum.photos/id/1029/4887/2759",
+                    "name": "Mushroom and pigeon dumplings",
+                    "description": "Thin pastry cases stuffed with button mushroom and pigeon",
+                    "tags": [
+                        "flour",
+                        "water",
+                        "salt",
+                        "onions",
+                        "mushroom",
+                        "pigeon"
+                    ]
+                },
+                {
+                    "_id": "61766b6efc13ae746600000e",
+                    "price": 6,
+                    "display_price": 6,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/103/2592/1936",
+                    "name": "Kumquat and hazelnut jam",
+                    "description": "A sweet jam made from fresh kumquat and hazelnut",
+                    "tags": [
+                        "flour",
+                        "yeast",
+                        "water",
+                        "salt",
+                        "sugar",
+                        "oil",
+                        "kumquat",
+                        "hazelnut"
+                    ]
+                }
+            ]
+        },
+        {
+            "category_id": "beverages",
+            "items": [
+                {
+                    "_id": "61766c7dfc13ae3876000000",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1031/5446/3063",
+                    "name": "Blueberry Mud",
+                    "description": "Lorem ipsum dolor si amet",
+                    "tags": [
+                        "water",
+                        "blueberry"
+                    ]
+                },
+                {
+                    "_id": "61766c7dfc13ae3876000001",
+                    "price": 5,
+                    "display_price": 1.5,
+                    "is_discount": true,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1032/2880/1800",
+                    "name": "Balanced Jam",
+                    "description": "Lorem ipsum dolor si amet",
+                    "tags": [
+                        "water",
+                        "jam"
+                    ]
+                },
+                {
+                    "_id": "61766c7dfc13ae3876000002",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1033/2048/1365",
+                    "name": "Rose Petal Coffee",
+                    "description": "Lorem ipsum dolor si amet",
+                    "tags": [
+                        "water",
+                        "coffeee"
+                    ]
+                },
+                {
+                    "_id": "61766c7dfc13ae3876000003",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1035/5854/3903",
+                    "name": "Cider Blood",
+                    "description": "Lorem ipsum dolor si amet",
+                    "tags": [
+                        "water",
+                        "cider"
+                    ]
+                },
+                {
+                    "_id": "61766c7dfc13ae3876000004",
+                    "price": 5,
+                    "display_price": 5,
+                    "is_discount": false,
+                    "discount_percent": 0,
+                    "image_url": "https://picsum.photos/id/1036/4608/3072",
+                    "name": "Imaginary Lager",
+                    "description": "Lorem ipsum dolor si amet",
+                    "tags": [
+                        "water",
+                        "lager"
+                    ]
+                }
+            ]
+        }
+    ]
+}
