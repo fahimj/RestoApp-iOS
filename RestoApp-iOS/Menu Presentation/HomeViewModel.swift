@@ -44,6 +44,16 @@ class HomeViewModel {
     
     init(menuLoader: MenuLoader) {
         self.menuLoader = menuLoader
+        setupHeaderBinding()
+    }
+    
+    private func setupHeaderBinding() {
+        categoryViewModels
+            .map{categoryVMs in
+                categoryVMs.map{CategoryHeaderViewModel(name: $0.name)}
+            }
+            .bind(to: categoryHeaderViewModels)
+            .disposed(by: disposeBag)
     }
     
     public func load() {

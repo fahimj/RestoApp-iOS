@@ -24,15 +24,27 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func test_load_loaded5Items() {
-        let jsonData = getSampleJsonData()
-        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
         let sut = makeSut()
-        
         let expectedStates:[[CategoryViewModel]] = [
             [],
             [anyCategoryViewModel(), anyCategoryViewModel(), anyCategoryViewModel(), anyCategoryViewModel(), anyCategoryViewModel()]
         ]
         expect(sut, toCompleteWithCategoriesStates: expectedStates, when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+            sut.load()
+        })
+    }
+    
+    func test_load_loaded5HeaderItems() {
+        let sut = makeSut()
+        let expectedStates:[[CategoryHeaderViewModel]] = [
+            [],
+            ["Popular","Appetizer","Main Course","Dessert","Beverages"].map{CategoryHeaderViewModel(name: $0)}
+        ]
+        expect(sut, toCompleteWithCategoryHeadersStates: expectedStates, when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
             sut.load()
         })
     }
@@ -106,10 +118,18 @@ class HomeViewModelTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         //assertion
-        XCTAssertEqual(capturedCategoryResults.count, expectedCategoriesStates.count)
+        XCTAssertEqual(capturedCategoryResults.map{result in
+            result.map{$0.name}
+        }, expectedCategoriesStates.map{result in
+            result.map{$0.name}
+        })
     }
     
     private func anyCategoryViewModel() -> CategoryViewModel {
         CategoryViewModel(name: "anything", items: [])
+    }
+    
+    private func anyCategoryHeaderViewModel() -> CategoryHeaderViewModel {
+        CategoryHeaderViewModel(name: "anything")
     }
 }
