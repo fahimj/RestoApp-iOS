@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct JsonDtoMapper {
+final class HomeDtoMapper {
     enum JsonMapperError: Error {
         case invalidJson
     }
     
-    func map(data:Data) throws -> [Category] {
+    private init() {}
+    
+    static func map(data:Data) throws -> [Category] {
         let decoder = JSONDecoder()
         guard let json = try? decoder.decode(HomeRoot.self, from: data) else {throw JsonMapperError.invalidJson}
         let itemList = json.categoryItems

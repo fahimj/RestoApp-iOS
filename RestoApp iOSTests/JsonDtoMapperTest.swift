@@ -8,8 +8,9 @@ import XCTest
 @testable import RestoApp_iOS
 
 class JsonDtoMapperTests: XCTestCase {
+    typealias sut = HomeDtoMapper
+    
     func test_map_throwsErrorOnEmptyData() {
-        let sut = JsonDtoMapper()
         do {
             let _ = try sut.map(data: Data())
         } catch {
@@ -20,7 +21,6 @@ class JsonDtoMapperTests: XCTestCase {
     }
     
     func test_map_throwsErrorOnInvalidData() {
-        let sut = JsonDtoMapper()
         do {
             let _ = try sut.map(data: "any data".data(using: .ascii)!)
         } catch {
@@ -33,7 +33,6 @@ class JsonDtoMapperTests: XCTestCase {
     
     func test_map_returnsCorrectData() {
         let data = getSampleJsonData()
-        let sut = JsonDtoMapper()
         do {
             let result = try sut.map(data: data)
             XCTAssertTrue(result.count == 5)

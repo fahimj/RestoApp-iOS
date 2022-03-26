@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF1ACD0B27E584F2004270F9 /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = CF1ACD0A27E584F2004270F9 /* home.json */; };
 		CF1ACD0D27E5853A004270F9 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1ACD0C27E5853A004270F9 /* MenuItem.swift */; };
-		CF1ACD1227E587F9004270F9 /* JsonDtoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1ACD1127E587F9004270F9 /* JsonDtoMapper.swift */; };
+		CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */; };
 		CF5C7C5327E385F200AAC862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C5227E385F200AAC862 /* AppDelegate.swift */; };
 		CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C5427E385F200AAC862 /* SceneDelegate.swift */; };
 		CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5C7C5B27E385F300AAC862 /* Assets.xcassets */; };
@@ -35,7 +35,7 @@
 /* Begin PBXFileReference section */
 		CF1ACD0A27E584F2004270F9 /* home.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
 		CF1ACD0C27E5853A004270F9 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
-		CF1ACD1127E587F9004270F9 /* JsonDtoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDtoMapper.swift; sourceTree = "<group>"; };
+		CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDtoMapper.swift; sourceTree = "<group>"; };
 		CF5C7C4F27E385F200AAC862 /* RestoApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RestoApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5C7C5227E385F200AAC862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF5C7C5427E385F200AAC862 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			children = (
 				CF1ACD0E27E585B3004270F9 /* Codable */,
 				CF1ACD0C27E5853A004270F9 /* MenuItem.swift */,
-				CF1ACD1127E587F9004270F9 /* JsonDtoMapper.swift */,
+				CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */,
 			);
 			path = MenuLoader;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 				CF5C7C5327E385F200AAC862 /* AppDelegate.swift in Sources */,
 				CFDDE14A27ED4D65001517AD /* DetailCodable.swift in Sources */,
 				CF1ACD0D27E5853A004270F9 /* MenuItem.swift in Sources */,
-				CF1ACD1227E587F9004270F9 /* JsonDtoMapper.swift in Sources */,
+				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
 				CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */,
