@@ -17,6 +17,9 @@ class MainViewControllerTests: XCTestCase {
     func test_initViewController() {
         let sut = makeSut()
         sut.loadViewIfNeeded()
+//        let jsonData = getSampleJsonData()
+//        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+//        XCTAssertEqual(sut.tableView.numberOfSections, 5)
     }
     
     //MARK: Helpers

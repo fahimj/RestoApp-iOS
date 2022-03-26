@@ -13,15 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-//        let window = UIWindow(windowScene: windowScene)
-//        window.rootViewController = MainViewController() // Your initial view controller.
-//        window.makeKeyAndVisible()
-//        self.window = window
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = makeMainVC() // Your initial view controller.
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,6 +48,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    //MARK: Helpers
+    private func makeMainVC() -> MainViewController {
+        let vm = makeHomeViewModel()
+        let vc = MainViewController(viewModel: vm)
+        return vc
+    }
+    
+    private func makeHomeViewModel() -> HomeViewModel {
+        let menuLoader = makeRemoteMenuLoader()
+        let vm = HomeViewModel(menuLoader: menuLoader)
+        return vm
+    }
+    
+    private func makeRemoteMenuLoader(file: StaticString = #filePath, line: UInt = #line) -> RemoteMenuLoader {
+        let httpClient = makeHttpClient()
+        let remoteMenuLoader = RemoteMenuLoader(httpClient: httpClient)
+        return remoteMenuLoader
+    }
+    
+    private func makeHttpClient(file: StaticString = #filePath, line: UInt = #line) -> HttpClient {
+        let client = UrlSessionHttpClient(session: URLSession.shared)
+        return client
+    }
 
 }
 

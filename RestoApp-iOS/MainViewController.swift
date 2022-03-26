@@ -26,11 +26,12 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
+        viewModel.load()
     }
     
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 300
-//    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 //
 //    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 //        return 50
@@ -54,7 +55,7 @@ class MainViewController: UITableViewController {
     var dataSource: RxTableViewSectionedAnimatedDataSource<CategoryViewModel>!
     
     private func setupDataSource() {
-        tableView.delegate = nil
+//        tableView.delegate = nil
         tableView.dataSource = nil
         
 //        tableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -63,11 +64,17 @@ class MainViewController: UITableViewController {
         dataSource = RxTableViewSectionedAnimatedDataSource<CategoryViewModel> { (_, tableView, indexPath, item) in
             
             let cell: MenuItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: MenuItemTableViewCell.identifier, for: indexPath) as! MenuItemTableViewCell
+            cell.bindData(menuViewModel: item)
             
             return cell
         }
         
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].name
+        }
+        
         viewModel.categoryViewModels
+            .skip(1)
 //            .distinctUntilChanged()
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items(dataSource: dataSource))

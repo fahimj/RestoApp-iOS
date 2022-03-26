@@ -41,6 +41,7 @@ class HomeDtoMapperTests: XCTestCase {
             
             XCTAssertEqual(result[1].id, "appetizer")
             XCTAssertEqual(result[1].items.first!.name, "Tofu and sweetcorn gyoza")
+            XCTAssertEqual(result[0].items.first!.descriptionField, "A crisp salad featuring fresh nectarine and beetroot")
         } catch {
             XCTFail("Should catch no error, but found and error: \(error)")
         }

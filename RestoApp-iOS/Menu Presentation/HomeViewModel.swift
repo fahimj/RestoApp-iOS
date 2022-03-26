@@ -27,11 +27,12 @@ struct CategoryViewModel {
 struct ItemViewModel {
     let name:String
     let imageUrl:String
+    let description:String
     let tags:[String]
     let price:String
     
     static func map(from menu:MenuItem) -> ItemViewModel {
-        return ItemViewModel(name: menu.name, imageUrl: menu.imageUrl, tags: menu.tags, price: "SGD \(menu.price)")
+        return ItemViewModel(name: menu.name, imageUrl: menu.imageUrl, description: menu.descriptionField, tags: menu.tags, price: "SGD \(menu.price)")
     }
 }
 
