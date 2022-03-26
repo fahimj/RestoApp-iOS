@@ -28,12 +28,13 @@
 		CF7C481F27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C481E27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift */; };
 		CF7C482127EEFB1F0017F965 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482027EEFB1F0017F965 /* SharedTestHelpers.swift */; };
 		CF7C482527EF349E0017F965 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482427EF349E0017F965 /* HttpClient.swift */; };
-		CF7C482727EF34F10017F965 /* ItemDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482627EF34F10017F965 /* ItemDetailLoader.swift */; };
+		CF7C482727EF34F10017F965 /* RemoteItemDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482627EF34F10017F965 /* RemoteItemDetailLoader.swift */; };
 		CF7C482A27EF36450017F965 /* MenuLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482927EF36450017F965 /* MenuLoader.swift */; };
 		CF7C482C27EF36AF0017F965 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482B27EF36AF0017F965 /* Category.swift */; };
 		CF7C482E27EF36C30017F965 /* Variant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482D27EF36C30017F965 /* Variant.swift */; };
 		CF7C483027EF36DB0017F965 /* AddonCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C482F27EF36DB0017F965 /* AddonCategory.swift */; };
 		CF7C483227EF36EB0017F965 /* Addon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483127EF36EB0017F965 /* Addon.swift */; };
+		CF7C483427EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -69,12 +70,13 @@
 		CF7C481E27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		CF7C482027EEFB1F0017F965 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		CF7C482427EF349E0017F965 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		CF7C482627EF34F10017F965 /* ItemDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailLoader.swift; sourceTree = "<group>"; };
+		CF7C482627EF34F10017F965 /* RemoteItemDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteItemDetailLoader.swift; sourceTree = "<group>"; };
 		CF7C482927EF36450017F965 /* MenuLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLoader.swift; sourceTree = "<group>"; };
 		CF7C482B27EF36AF0017F965 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CF7C482D27EF36C30017F965 /* Variant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variant.swift; sourceTree = "<group>"; };
 		CF7C482F27EF36DB0017F965 /* AddonCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddonCategory.swift; sourceTree = "<group>"; };
 		CF7C483127EF36EB0017F965 /* Addon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Addon.swift; sourceTree = "<group>"; };
+		CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteItemDetailLoaderTests.swift; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -101,16 +103,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CF1ACD0927E580C9004270F9 /* MenuLoader */ = {
+		CF1ACD0927E580C9004270F9 /* Menu API */ = {
 			isa = PBXGroup;
 			children = (
 				CF7C482427EF349E0017F965 /* HttpClient.swift */,
 				CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */,
 				CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */,
 				CF7C481227EEF4490017F965 /* RemoteMenuLoader.swift */,
-				CF7C482627EF34F10017F965 /* ItemDetailLoader.swift */,
+				CF7C482627EF34F10017F965 /* RemoteItemDetailLoader.swift */,
 			);
-			path = MenuLoader;
+			path = "Menu API";
 			sourceTree = "<group>";
 		};
 		CF5C7C4627E385F200AAC862 = {
@@ -135,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				CF7C482827EF36030017F965 /* Menu Feature */,
-				CF1ACD0927E580C9004270F9 /* MenuLoader */,
+				CF1ACD0927E580C9004270F9 /* Menu API */,
 				CF5C7C5227E385F200AAC862 /* AppDelegate.swift */,
 				CF5C7C5427E385F200AAC862 /* SceneDelegate.swift */,
 				CFD2031E27E40345004B69B3 /* MainViewController.swift */,
@@ -153,10 +155,9 @@
 				CF7C481B27EEFAB70017F965 /* Helpers */,
 				CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */,
 				CF7C47D027EEE8B30017F965 /* DetailDtoMapperTest.swift */,
-				CF1ACD0A27E584F2004270F9 /* home.json */,
-				CFDDE14727ED4D3B001517AD /* detail.json */,
-				CF7C481627EEF4C50017F965 /* RemoteMenuLoaderTests.swift */,
 				CF7C481827EEFA900017F965 /* HttpClientTests.swift */,
+				CF7C481627EEF4C50017F965 /* RemoteMenuLoaderTests.swift */,
+				CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */,
 			);
 			path = "RestoApp iOSTests";
 			sourceTree = "<group>";
@@ -164,6 +165,8 @@
 		CF7C481B27EEFAB70017F965 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CFDDE14727ED4D3B001517AD /* detail.json */,
+				CF1ACD0A27E584F2004270F9 /* home.json */,
 				CF7C481C27EEFAD90017F965 /* URLProtocolStub.swift */,
 				CF7C481E27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift */,
 				CF7C482027EEFB1F0017F965 /* SharedTestHelpers.swift */,
@@ -302,7 +305,7 @@
 				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
 				CF7C483027EF36DB0017F965 /* AddonCategory.swift in Sources */,
 				CF7C481327EEF4490017F965 /* RemoteMenuLoader.swift in Sources */,
-				CF7C482727EF34F10017F965 /* ItemDetailLoader.swift in Sources */,
+				CF7C482727EF34F10017F965 /* RemoteItemDetailLoader.swift in Sources */,
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
 				CF7C482E27EF36C30017F965 /* Variant.swift in Sources */,
@@ -320,6 +323,7 @@
 				CF7C481F27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift in Sources */,
 				CF7C482127EEFB1F0017F965 /* SharedTestHelpers.swift in Sources */,
 				CF7C481727EEF4C50017F965 /* RemoteMenuLoaderTests.swift in Sources */,
+				CF7C483427EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift in Sources */,
 				CF7C481927EEFA900017F965 /* HttpClientTests.swift in Sources */,
 				CF7C47D127EEE8B40017F965 /* DetailDtoMapperTest.swift in Sources */,
 				CF7C481D27EEFAD90017F965 /* URLProtocolStub.swift in Sources */,
