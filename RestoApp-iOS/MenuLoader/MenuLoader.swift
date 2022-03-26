@@ -13,6 +13,10 @@ protocol MenuLoader {
     func getMenu() -> Observable<[Category]>
 }
 
+protocol ItemDetailLoader {
+    func getItemDetail() -> Observable<MenuItem>
+}
+
 protocol HttpClient {
     func load(urlString:String) -> Observable<Data>
 }
@@ -48,7 +52,31 @@ class UrlSessionHttpClient : HttpClient {
 }
 
 class RemoteMenuLoader : MenuLoader {
+    let httpClient: HttpClient
+    
+    init(httpClient:HttpClient) {
+        self.httpClient = httpClient
+    }
+    
     func getMenu() -> Observable<[Category]> {
-        return .just([])
+        let url = "https://mock.vouchconcierge.com/ios/catalogue/home"
+        return httpClient.load(urlString: url).map{data -> [Category] in
+            return try HomeDtoMapper.map(data: data)
+        }
+    }
+}
+
+class RemoteItemDetailLoader : ItemDetailLoader {
+    let httpClient: HttpClient
+    
+    init(httpClient:HttpClient) {
+        self.httpClient = httpClient
+    }
+    
+    func getItemDetail() -> Observable<MenuItem> {
+        let url = "https://mock.vouchconcierge.com/ios/catalogue/detail"
+        return httpClient.load(urlString: url).map{data -> MenuItem in
+            return try DetailDtoMapper.map(data: data)
+        }
     }
 }
