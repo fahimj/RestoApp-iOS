@@ -73,7 +73,6 @@ class HomeViewModelTests: XCTestCase {
         return sut
     }
     
-    
     private func getSampleJsonData() -> Data {
         let bundle = Bundle(for: type(of: self))
         let path = bundle.path(forResource: "home", ofType: "json")!

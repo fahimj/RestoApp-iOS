@@ -39,6 +39,11 @@
 		CF7C483927EF38F40017F965 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483827EF38F40017F965 /* HomeViewModelTests.swift */; };
 		CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */; };
 		CF7C484327EF5FE70017F965 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */; };
+		CF7C484927EF66600017F965 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = CF7C484827EF66600017F965 /* Differentiator */; };
+		CF7C484B27EF66600017F965 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CF7C484A27EF66600017F965 /* RxDataSources */; };
+		CF7C484D27EF6A3F0017F965 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C484C27EF6A3F0017F965 /* MainViewControllerTests.swift */; };
+		CF7C484F27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */; };
+		CF7C485127EF6C5A0017F965 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -85,6 +90,9 @@
 		CF7C483827EF38F40017F965 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		CF7C484C27EF6A3F0017F965 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
+		CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryViewModel+AnimatableSectionModelType.swift"; sourceTree = "<group>"; };
+		CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -95,8 +103,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7C484927EF66600017F965 /* Differentiator in Frameworks */,
 				CF7C481127EEF4270017F965 /* RxSwift in Frameworks */,
 				CF7C480F27EEF4270017F965 /* RxRelay in Frameworks */,
+				CF7C484B27EF66600017F965 /* RxDataSources in Frameworks */,
 				CF7C480D27EEF4270017F965 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +179,7 @@
 				CF7C481627EEF4C50017F965 /* RemoteMenuLoaderTests.swift */,
 				CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */,
 				CF7C483827EF38F40017F965 /* HomeViewModelTests.swift */,
+				CF7C484C27EF6A3F0017F965 /* MainViewControllerTests.swift */,
 			);
 			path = "RestoApp iOSTests";
 			sourceTree = "<group>";
@@ -211,6 +222,8 @@
 			children = (
 				CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */,
 				CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */,
+				CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */,
+				CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */,
 			);
 			path = "Menu UI";
 			sourceTree = "<group>";
@@ -235,6 +248,8 @@
 				CF7C480C27EEF4270017F965 /* RxCocoa */,
 				CF7C480E27EEF4270017F965 /* RxRelay */,
 				CF7C481027EEF4270017F965 /* RxSwift */,
+				CF7C484827EF66600017F965 /* Differentiator */,
+				CF7C484A27EF66600017F965 /* RxDataSources */,
 			);
 			productName = "RestoApp iOS";
 			productReference = CF5C7C4F27E385F200AAC862 /* RestoApp-iOS.app */;
@@ -288,6 +303,7 @@
 			mainGroup = CF5C7C4627E385F200AAC862;
 			packageReferences = (
 				CF7C480B27EEF4270017F965 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CF7C484727EF66600017F965 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = CF5C7C5027E385F200AAC862 /* Products */;
 			projectDirPath = "";
@@ -330,6 +346,7 @@
 				CF5C7C5327E385F200AAC862 /* AppDelegate.swift in Sources */,
 				CF1ACD0D27E5853A004270F9 /* MenuItem.swift in Sources */,
 				CF7C482527EF349E0017F965 /* HttpClient.swift in Sources */,
+				CF7C484F27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift in Sources */,
 				CF7C482A27EF36450017F965 /* MenuLoader.swift in Sources */,
 				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
 				CF7C483027EF36DB0017F965 /* AddonCategory.swift in Sources */,
@@ -338,6 +355,7 @@
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
 				CF7C482E27EF36C30017F965 /* Variant.swift in Sources */,
+				CF7C485127EF6C5A0017F965 /* UIView+Nib.swift in Sources */,
 				CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */,
 				CF7C483227EF36EB0017F965 /* Addon.swift in Sources */,
 				CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */,
@@ -359,6 +377,7 @@
 				CF7C481927EEFA900017F965 /* HttpClientTests.swift in Sources */,
 				CF7C47D127EEE8B40017F965 /* DetailDtoMapperTest.swift in Sources */,
 				CF7C481D27EEFAD90017F965 /* URLProtocolStub.swift in Sources */,
+				CF7C484D27EF6A3F0017F965 /* MainViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +677,14 @@
 				kind = branch;
 			};
 		};
+		CF7C484727EF66600017F965 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -675,6 +702,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF7C480B27EEF4270017F965 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		CF7C484827EF66600017F965 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF7C484727EF66600017F965 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		CF7C484A27EF66600017F965 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF7C484727EF66600017F965 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
