@@ -15,10 +15,12 @@
 		CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5C7C5B27E385F300AAC862 /* Assets.xcassets */; };
 		CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5C7C5D27E385F300AAC862 /* LaunchScreen.storyboard */; };
 		CF5C7C6A27E385F300AAC862 /* HomeDtoMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */; };
+		CF7C47D127EEE8B40017F965 /* DetailDtoMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C47D027EEE8B30017F965 /* DetailDtoMapperTest.swift */; };
+		CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */; };
+		CF7C47D427EEEA5E0017F965 /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDDE14727ED4D3B001517AD /* detail.json */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 		CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE14527ED430F001517AD /* HomeCodable.swift */; };
-		CFDDE14827ED4D3B001517AD /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDDE14727ED4D3B001517AD /* detail.json */; };
 		CFDDE14A27ED4D65001517AD /* DetailCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE14927ED4D65001517AD /* DetailCodable.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		CF5C7C6027E385F300AAC862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5C7C6527E385F300AAC862 /* RestoApp-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RestoApp-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDtoMapperTest.swift; sourceTree = "<group>"; };
+		CF7C47D027EEE8B30017F965 /* DetailDtoMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDtoMapperTest.swift; sourceTree = "<group>"; };
+		CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDtoMapper.swift; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14527ED430F001517AD /* HomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodable.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 				CF1ACD0E27E585B3004270F9 /* Codable */,
 				CF1ACD0C27E5853A004270F9 /* MenuItem.swift */,
 				CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */,
+				CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */,
 			);
 			path = MenuLoader;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */,
+				CF7C47D027EEE8B30017F965 /* DetailDtoMapperTest.swift */,
 				CF1ACD0A27E584F2004270F9 /* home.json */,
 				CFDDE14727ED4D3B001517AD /* detail.json */,
 			);
@@ -216,7 +222,6 @@
 			files = (
 				CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */,
 				CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */,
-				CFDDE14827ED4D3B001517AD /* detail.json in Resources */,
 				CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7C47D427EEEA5E0017F965 /* detail.json in Resources */,
 				CF1ACD0B27E584F2004270F9 /* home.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +249,7 @@
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
 				CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */,
+				CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C7C6A27E385F300AAC862 /* HomeDtoMapperTest.swift in Sources */,
+				CF7C47D127EEE8B40017F965 /* DetailDtoMapperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
