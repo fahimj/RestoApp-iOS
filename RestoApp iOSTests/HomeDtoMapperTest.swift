@@ -7,7 +7,7 @@
 import XCTest
 @testable import RestoApp_iOS
 
-class JsonDtoMapperTests: XCTestCase {
+class HomeDtoMapperTests: XCTestCase {
     typealias sut = HomeDtoMapper
     
     func test_map_throwsErrorOnEmptyData() {

@@ -14,7 +14,7 @@
 		CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C5427E385F200AAC862 /* SceneDelegate.swift */; };
 		CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF5C7C5B27E385F300AAC862 /* Assets.xcassets */; };
 		CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF5C7C5D27E385F300AAC862 /* LaunchScreen.storyboard */; };
-		CF5C7C6A27E385F300AAC862 /* JsonDtoMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C6927E385F300AAC862 /* JsonDtoMapperTest.swift */; };
+		CF5C7C6A27E385F300AAC862 /* HomeDtoMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 		CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE14527ED430F001517AD /* HomeCodable.swift */; };
@@ -43,7 +43,7 @@
 		CF5C7C5E27E385F300AAC862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF5C7C6027E385F300AAC862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF5C7C6527E385F300AAC862 /* RestoApp-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RestoApp-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF5C7C6927E385F300AAC862 /* JsonDtoMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDtoMapperTest.swift; sourceTree = "<group>"; };
+		CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDtoMapperTest.swift; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14527ED430F001517AD /* HomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodable.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		CF5C7C6827E385F300AAC862 /* RestoApp iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				CF5C7C6927E385F300AAC862 /* JsonDtoMapperTest.swift */,
+				CF5C7C6927E385F300AAC862 /* HomeDtoMapperTest.swift */,
 				CF1ACD0A27E584F2004270F9 /* home.json */,
 				CFDDE14727ED4D3B001517AD /* detail.json */,
 			);
@@ -250,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5C7C6A27E385F300AAC862 /* JsonDtoMapperTest.swift in Sources */,
+				CF5C7C6A27E385F300AAC862 /* HomeDtoMapperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
