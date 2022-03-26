@@ -20,8 +20,6 @@
 		CF7C47D427EEEA5E0017F965 /* detail.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDDE14727ED4D3B001517AD /* detail.json */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
-		CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE14527ED430F001517AD /* HomeCodable.swift */; };
-		CFDDE14A27ED4D65001517AD /* DetailCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDE14927ED4D65001517AD /* DetailCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +48,7 @@
 		CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDtoMapper.swift; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		CFDDE14527ED430F001517AD /* HomeCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCodable.swift; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
-		CFDDE14927ED4D65001517AD /* DetailCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,21 +72,11 @@
 		CF1ACD0927E580C9004270F9 /* MenuLoader */ = {
 			isa = PBXGroup;
 			children = (
-				CF1ACD0E27E585B3004270F9 /* Codable */,
 				CF1ACD0C27E5853A004270F9 /* MenuItem.swift */,
 				CF1ACD1127E587F9004270F9 /* HomeDtoMapper.swift */,
 				CF7C47D227EEE8EA0017F965 /* DetailDtoMapper.swift */,
 			);
 			path = MenuLoader;
-			sourceTree = "<group>";
-		};
-		CF1ACD0E27E585B3004270F9 /* Codable */ = {
-			isa = PBXGroup;
-			children = (
-				CFDDE14527ED430F001517AD /* HomeCodable.swift */,
-				CFDDE14927ED4D65001517AD /* DetailCodable.swift */,
-			);
-			path = Codable;
 			sourceTree = "<group>";
 		};
 		CF5C7C4627E385F200AAC862 = {
@@ -243,12 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C7C5327E385F200AAC862 /* AppDelegate.swift in Sources */,
-				CFDDE14A27ED4D65001517AD /* DetailCodable.swift in Sources */,
 				CF1ACD0D27E5853A004270F9 /* MenuItem.swift in Sources */,
 				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
-				CFDDE14627ED430F001517AD /* HomeCodable.swift in Sources */,
 				CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
