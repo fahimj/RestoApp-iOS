@@ -37,6 +37,8 @@
 		CF7C483427EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */; };
 		CF7C483727EF38E40017F965 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483627EF38E30017F965 /* HomeViewModel.swift */; };
 		CF7C483927EF38F40017F965 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C483827EF38F40017F965 /* HomeViewModelTests.swift */; };
+		CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */; };
+		CF7C484327EF5FE70017F965 /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -81,6 +83,8 @@
 		CF7C483327EF37BB0017F965 /* RemoteItemDetailLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteItemDetailLoaderTests.swift; sourceTree = "<group>"; };
 		CF7C483627EF38E30017F965 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CF7C483827EF38F40017F965 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		CF5C7C5127E385F200AAC862 /* RestoApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CF7C483F27EF5FBD0017F965 /* Menu UI */,
 				CF7C483527EF38B50017F965 /* Menu Presentation */,
 				CF7C482827EF36030017F965 /* Menu Feature */,
 				CF1ACD0927E580C9004270F9 /* Menu API */,
@@ -199,6 +204,15 @@
 				CF7C483627EF38E30017F965 /* HomeViewModel.swift */,
 			);
 			path = "Menu Presentation";
+			sourceTree = "<group>";
+		};
+		CF7C483F27EF5FBD0017F965 /* Menu UI */ = {
+			isa = PBXGroup;
+			children = (
+				CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */,
+				CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */,
+			);
+			path = "Menu UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */,
+				CF7C484327EF5FE70017F965 /* MenuItemTableViewCell.xib in Resources */,
 				CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */,
 				CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */,
 			);
@@ -325,6 +340,7 @@
 				CF7C482E27EF36C30017F965 /* Variant.swift in Sources */,
 				CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */,
 				CF7C483227EF36EB0017F965 /* Addon.swift in Sources */,
+				CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */,
 				CF7C483727EF38E40017F965 /* HomeViewModel.swift in Sources */,
 				CF7C482C27EF36AF0017F965 /* Category.swift in Sources */,
 			);
