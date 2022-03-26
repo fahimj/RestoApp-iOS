@@ -12,18 +12,10 @@ struct JsonDtoMapper {
         case invalidJson
     }
     
-    func map(data:Data) throws -> [HomeItem] {
+    func map(data:Data) throws -> [Category] {
         let decoder = JSONDecoder()
-        let json = try decoder.decode(HomeRoot.self, from: data)
-        guard let itemList = json.list else {throw JsonMapperError.invalidJson}
-//        return itemList
-//        guard let bpis = json.bpi else {throw JsonMapperError.invalidJson }
-//
-//        let dtos = [bpis.eur!, bpis.gbp!, bpis.usd!]
-//        let items = dtos.map{bpi in
-//            Price(pairName: "BTC" + bpi.code!, price: bpi.rateFloat!, date: Date())
-//        }
-//        return items
-        return []
+        guard let json = try? decoder.decode(HomeRoot.self, from: data) else {throw JsonMapperError.invalidJson}
+        let itemList = json.categoryItems
+        return itemList
     }
 }

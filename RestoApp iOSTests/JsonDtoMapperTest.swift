@@ -19,30 +19,33 @@ class JsonDtoMapperTests: XCTestCase {
         XCTFail()
     }
     
-//    func test_mapToPrice_throwsErrorOnInvalidData() {
-//        let sut = JsonDtoMapper()
-//        do {
-//            let _ = try sut.mapToPrice(jsonData: "any data".data(using: .ascii)!)
-//        } catch is DecodingError {
-//            return
-//        } catch {
-//            print(error.localizedDescription)
-//            XCTFail("Should catch decoding json error")
-//        }
-//        
-//        XCTFail("Should catch decoding json error")
-//    }
-//    
-//    func test_mapToPrice_returns3Items() {
-//        let data = getSampleJsonData()
-//        let sut = JsonDtoMapper()
-//        do {
-//            let result = try sut.mapToPrice(jsonData: data)
-//            XCTAssertTrue(result.count == 3)
-//        } catch {
-//            XCTFail("Should catch no error")
-//        }
-//    }
+    func test_map_throwsErrorOnInvalidData() {
+        let sut = JsonDtoMapper()
+        do {
+            let _ = try sut.map(data: "any data".data(using: .ascii)!)
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+        
+        XCTFail("Should catch decoding json error")
+    }
+    
+    func test_map_returnsCorrectData() {
+        let data = getSampleJsonData()
+        let sut = JsonDtoMapper()
+        do {
+            let result = try sut.map(data: data)
+            XCTAssertTrue(result.count == 5)
+            XCTAssertEqual(result.first!.items.count, 10)
+            XCTAssertEqual(result.first!.items.first!.imageUrl, "https://picsum.photos/id/0/5616/3744")
+            
+            XCTAssertEqual(result[1].id, "appetizer")
+            XCTAssertEqual(result[1].items.first!.name, "Tofu and sweetcorn gyoza")
+        } catch {
+            XCTFail("Should catch no error, but found and error: \(error)")
+        }
+    }
     
     // MARK: Helpers
     

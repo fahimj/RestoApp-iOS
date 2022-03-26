@@ -19,7 +19,6 @@ struct DetailRoot : Codable {
     let tags : [String]?
     let variants : [DetailVariant]?
 
-
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case addons = "addons"
@@ -33,6 +32,7 @@ struct DetailRoot : Codable {
         case tags = "tags"
         case variants = "variants"
     }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
@@ -47,8 +47,6 @@ struct DetailRoot : Codable {
         tags = try values.decodeIfPresent([String].self, forKey: .tags)
         variants = try values.decodeIfPresent([DetailVariant].self, forKey: .variants)
     }
-
-
 }
 
 struct DetailVariant : Codable {
