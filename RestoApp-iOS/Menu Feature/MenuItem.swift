@@ -7,13 +7,6 @@
 
 import Foundation
 
-struct Category {
-    let id: String
-    let name: String
-    
-    var items:[MenuItem]
-}
-
 struct MenuItem {
     let id : String
     let descriptionField : String
@@ -27,22 +20,4 @@ struct MenuItem {
     
     let variants:[Variant]
     let addOnCategories:[AddonCategory]
-}
-
-struct Variant {
-    let id: String
-    let name: String
-}
-
-struct AddonCategory {
-    let id: String
-    let name: String
-    
-    let addons:[Addon]
-}
-
-struct Addon {
-    let id: String
-    let name: String
-    let additionalPrice: Double
 }
