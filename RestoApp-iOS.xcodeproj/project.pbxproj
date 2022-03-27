@@ -51,6 +51,12 @@
 		CF7C486527F05D050017F965 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486327F05D050017F965 /* DetailViewController.swift */; };
 		CF7C486627F05D050017F965 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C486427F05D050017F965 /* DetailViewController.xib */; };
 		CF7C486827F095CA0017F965 /* DetailJsonSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486727F095CA0017F965 /* DetailJsonSample.swift */; };
+		CF7C486A27F0A98B0017F965 /* AddonCategoryViewModel+AnimatableSectionModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486927F0A98B0017F965 /* AddonCategoryViewModel+AnimatableSectionModelType.swift */; };
+		CF7C486E27F0AB990017F965 /* AddonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486C27F0AB990017F965 /* AddonTableViewCell.swift */; };
+		CF7C486F27F0AB990017F965 /* AddonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C486D27F0AB990017F965 /* AddonTableViewCell.xib */; };
+		CF7C487127F0AC9E0017F965 /* UIView+Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C487027F0AC9E0017F965 /* UIView+Inspectable.swift */; };
+		CF7C487327F0B4B80017F965 /* TableViewAdjustedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C487227F0B4B80017F965 /* TableViewAdjustedHeight.swift */; };
+		CF7C487527F0B4D60017F965 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C487427F0B4D60017F965 /* UIColor+Hex.swift */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -107,6 +113,12 @@
 		CF7C486327F05D050017F965 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CF7C486427F05D050017F965 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		CF7C486727F095CA0017F965 /* DetailJsonSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJsonSample.swift; sourceTree = "<group>"; };
+		CF7C486927F0A98B0017F965 /* AddonCategoryViewModel+AnimatableSectionModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddonCategoryViewModel+AnimatableSectionModelType.swift"; sourceTree = "<group>"; };
+		CF7C486C27F0AB990017F965 /* AddonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddonTableViewCell.swift; sourceTree = "<group>"; };
+		CF7C486D27F0AB990017F965 /* AddonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddonTableViewCell.xib; sourceTree = "<group>"; };
+		CF7C487027F0AC9E0017F965 /* UIView+Inspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Inspectable.swift"; sourceTree = "<group>"; };
+		CF7C487227F0B4B80017F965 /* TableViewAdjustedHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdjustedHeight.swift; sourceTree = "<group>"; };
+		CF7C487427F0B4D60017F965 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -237,16 +249,30 @@
 		CF7C483F27EF5FBD0017F965 /* Menu UI */ = {
 			isa = PBXGroup;
 			children = (
+				CF7C486B27F0AB490017F965 /* Extension */,
 				CF7C484027EF5FE70017F965 /* MenuItemTableViewCell.swift */,
 				CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */,
-				CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */,
-				CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */,
+				CF7C486C27F0AB990017F965 /* AddonTableViewCell.swift */,
+				CF7C486D27F0AB990017F965 /* AddonTableViewCell.xib */,
 				CF7C486327F05D050017F965 /* DetailViewController.swift */,
 				CF7C486427F05D050017F965 /* DetailViewController.xib */,
 				CFD2031E27E40345004B69B3 /* MainViewController.swift */,
 				CFD2031F27E40345004B69B3 /* MainViewController.xib */,
+				CF7C487227F0B4B80017F965 /* TableViewAdjustedHeight.swift */,
 			);
 			path = "Menu UI";
+			sourceTree = "<group>";
+		};
+		CF7C486B27F0AB490017F965 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */,
+				CF7C486927F0A98B0017F965 /* AddonCategoryViewModel+AnimatableSectionModelType.swift */,
+				CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */,
+				CF7C487027F0AC9E0017F965 /* UIView+Inspectable.swift */,
+				CF7C487427F0B4D60017F965 /* UIColor+Hex.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7C486F27F0AB990017F965 /* AddonTableViewCell.xib in Resources */,
 				CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */,
 				CF7C484327EF5FE70017F965 /* MenuItemTableViewCell.xib in Resources */,
 				CF7C486627F05D050017F965 /* DetailViewController.xib in Resources */,
@@ -368,7 +395,9 @@
 				CF5C7C5327E385F200AAC862 /* AppDelegate.swift in Sources */,
 				CF1ACD0D27E5853A004270F9 /* MenuItem.swift in Sources */,
 				CF7C482527EF349E0017F965 /* HttpClient.swift in Sources */,
+				CF7C487527F0B4D60017F965 /* UIColor+Hex.swift in Sources */,
 				CF7C484F27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift in Sources */,
+				CF7C487327F0B4B80017F965 /* TableViewAdjustedHeight.swift in Sources */,
 				CF7C482A27EF36450017F965 /* MenuLoader.swift in Sources */,
 				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
 				CF7C486527F05D050017F965 /* DetailViewController.swift in Sources */,
@@ -377,13 +406,16 @@
 				CF7C481327EEF4490017F965 /* RemoteMenuLoader.swift in Sources */,
 				CF7C482727EF34F10017F965 /* RemoteItemDetailLoader.swift in Sources */,
 				CF5C7C5527E385F200AAC862 /* SceneDelegate.swift in Sources */,
+				CF7C486E27F0AB990017F965 /* AddonTableViewCell.swift in Sources */,
 				CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */,
 				CF7C482E27EF36C30017F965 /* Variant.swift in Sources */,
 				CF7C485127EF6C5A0017F965 /* UIView+Nib.swift in Sources */,
 				CF7C47D327EEE8EA0017F965 /* DetailDtoMapper.swift in Sources */,
+				CF7C487127F0AC9E0017F965 /* UIView+Inspectable.swift in Sources */,
 				CF7C485F27EFE66A0017F965 /* DetailLoader.swift in Sources */,
 				CF7C483227EF36EB0017F965 /* Addon.swift in Sources */,
 				CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */,
+				CF7C486A27F0A98B0017F965 /* AddonCategoryViewModel+AnimatableSectionModelType.swift in Sources */,
 				CF7C483727EF38E40017F965 /* HomeViewModel.swift in Sources */,
 				CF7C486827F095CA0017F965 /* DetailJsonSample.swift in Sources */,
 				CF7C482C27EF36AF0017F965 /* Category.swift in Sources */,

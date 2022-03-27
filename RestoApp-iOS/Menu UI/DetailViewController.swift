@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class DetailViewController: UIViewController {
 
@@ -150,8 +151,25 @@ class DetailViewController: UIViewController {
         //TODO: implementation
     }
     
+    var dataSource: RxTableViewSectionedAnimatedDataSource<AddonCategoryViewModel>!
     private func setupAddonBinding() {
-        //TODO: implementation
+        addonTableView.register(AddonTableViewCell.nib, forCellReuseIdentifier: AddonTableViewCell.identifier)
+        addonTableView.separatorStyle = .none
+        dataSource = RxTableViewSectionedAnimatedDataSource<AddonCategoryViewModel> { (_, tableView, indexPath, item) in
+            
+            let cell: AddonTableViewCell = tableView.dequeueReusableCell(withIdentifier: AddonTableViewCell.identifier, for: indexPath) as! AddonTableViewCell
+            cell.bindData(model: item)
+            return cell
+        }
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].name
+        }
+        
+        viewModel.addonCategories
+            .asDriver(onErrorJustReturn: [])
+            .drive(addonTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
     }
     
     private func setupTagsBinding() {
@@ -172,15 +190,5 @@ class DetailViewController: UIViewController {
         addToCartButton.layer.shadowOpacity = 0.3
         addToCartButton.layer.cornerRadius = 10
         addToCartButton.layer.borderColor = UIColor.lightGray.cgColor
-    }
-}
-
-extension UIColor {
-    convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
-        let red = CGFloat((hex & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((hex & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(hex & 0xFF)/256.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
