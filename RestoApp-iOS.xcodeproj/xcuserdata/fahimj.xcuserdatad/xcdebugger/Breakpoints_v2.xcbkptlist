@@ -14,8 +14,8 @@
             filePath = "RestoApp-iOS/Menu Presentation/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "load()"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B2A3F4A4-1B50-48E9-B96E-F77E7BD0E2C3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RestoApp-iOS/Menu UI/MenuItemTableViewCell.swift"

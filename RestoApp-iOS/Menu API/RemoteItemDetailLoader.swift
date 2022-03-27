@@ -8,10 +8,6 @@
 import Foundation
 import RxSwift
 
-protocol ItemDetailLoader {
-    func getItemDetail() -> Observable<MenuItem>
-}
-
 class RemoteItemDetailLoader : ItemDetailLoader {
     let httpClient: HttpClient
     

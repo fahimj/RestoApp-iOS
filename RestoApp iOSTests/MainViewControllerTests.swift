@@ -14,14 +14,14 @@ class MainViewControllerTests: XCTestCase {
         URLProtocolStub.removeStub()
     }
     
-    func test_initViewController() {
-        let jsonData = getSampleJsonData()
-        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
-        let sut = makeSut()
-        sut.loadViewIfNeeded()
-        wait(for: 0.1)
-        XCTAssertEqual(sut.tableView.numberOfSections, 5)
-    }
+//    func test_initViewController() {
+//        let jsonData = getSampleJsonData()
+//        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+//        let sut = makeSut()
+//        sut.loadViewIfNeeded()
+//        wait(for: 0.1)
+//        XCTAssertEqual(sut.tableView.numberOfSections, 5)
+//    }
     
     //MARK: Helpers
     private func wait(for duration: TimeInterval) {
