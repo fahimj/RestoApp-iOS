@@ -33,6 +33,27 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
+    func test_loadAndSelect_variantsStateUpdated() {
+        let sut = makeSut()
+        let expectedNewVariantsState = [
+            Variant(id: "varian_1", name: "Mashed Potato"),
+            Variant(id: "varian_2", name: "French Fries"),
+            Variant(id: "varian_3", name: "Potato Wedges")
+        ]
+        
+        expect(sut, toCompleteWithVariantStates: [[],expectedNewVariantsState], when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+            sut.load()
+        })
+        
+        let expectedSelectedVariant = Variant(id: "varian_2", name: "French Fries")
+        expect(sut, toCompleteWithSelectedVariantStates: [nil, expectedSelectedVariant, nil], when: {
+            sut.selectVariant(id: "varian_2")
+            sut.selectVariant(id: "")
+        })
+    }
+    
     //MARK: Helpers
     private func makeSut() -> DetailViewModel {
         let itemDetailLoader = makeRemoteItemDetailLoader()
@@ -99,6 +120,66 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
+    private func expect(_ sut: DetailViewModel, toCompleteWithVariantStates expectedItemStates:[[Variant]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let expectationFullfillmentCount = expectedItemStates.count
+        let disposeBag = DisposeBag()
+        var capturedResults:[[Variant]] = []
+        let exp = expectation(description: "wait for getting states")
+        exp.expectedFulfillmentCount = expectationFullfillmentCount
+        sut.variant.variants.subscribe(onNext: {items in
+            capturedResults.append(items)
+            exp.fulfill()
+        }, onError: {error in
+            XCTFail("unexpected error \(error)")
+        }).disposed(by: disposeBag)
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        //assertion
+        XCTAssertEqual(capturedResults.count, expectedItemStates.count)
+        XCTAssertEqual(capturedResults.map{result in
+            result.map{$0.id}
+        }, expectedItemStates.map{result in
+            result.map{$0.id}
+        })
+        XCTAssertEqual(capturedResults.map{result in
+            result.map{$0.name}
+        }, expectedItemStates.map{result in
+            result.map{$0.name}
+        })
+    }
+    
+    private func expect(_ sut: DetailViewModel, toCompleteWithSelectedVariantStates expectedStates:[Variant?], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let expectationFullfillmentCount = expectedStates.count
+        let disposeBag = DisposeBag()
+        var capturedResults:[Variant?] = []
+        let exp = expectation(description: "wait for getting states")
+        exp.expectedFulfillmentCount = expectationFullfillmentCount
+        sut.variant.selectedVariant.subscribe(onNext: {items in
+            capturedResults.append(items)
+            exp.fulfill()
+        }, onError: {error in
+            XCTFail("unexpected error \(error)")
+        }).disposed(by: disposeBag)
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        //assertion
+        XCTAssertEqual(capturedResults.count, expectedStates.count)
+        XCTAssertEqual(capturedResults.map{result in
+            result?.name
+        }, expectedStates.map{result in
+            result?.name
+        })
+        XCTAssertEqual(capturedResults.map{result in
+            result?.id
+        }, expectedStates.map{result in
+            result?.id
+        })
+    }
+    
     private func expect(_ sut: HomeViewModel, toCompleteWithCategoryHeadersStates expectedCategoriesStates:[[CategoryHeaderViewModel]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let expectationFullfillmentCount = expectedCategoriesStates.count
         let disposeBag = DisposeBag()
@@ -123,11 +204,15 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
-    private func anyCategoryViewModel() -> CategoryViewModel {
-        CategoryViewModel(name: "anything", items: [])
-    }
-    
-    private func anyCategoryHeaderViewModel() -> CategoryHeaderViewModel {
-        CategoryHeaderViewModel(name: "anything")
-    }
+    private func wait(for duration: TimeInterval) {
+        let waitExpectation = expectation(description: "Waiting")
+
+        let when = DispatchTime.now() + duration
+        DispatchQueue.main.asyncAfter(deadline: when) {
+          waitExpectation.fulfill()
+        }
+
+        // We use a buffer here to avoid flakiness with Timer on CI
+        waitForExpectations(timeout: duration + 0.5)
+      }
 }

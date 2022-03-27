@@ -13,7 +13,7 @@ import RxSwift
 //
 //}
 
-struct VariantViewModel {
+class VariantViewModel {
     let disposeBag = DisposeBag()
     let variants:BehaviorRelay<[Variant]> = BehaviorRelay(value: [])
     let selectedVariant:BehaviorRelay<Variant?> = BehaviorRelay(value: nil)
@@ -21,6 +21,11 @@ struct VariantViewModel {
     
     func updateModel(from item: MenuItem) {
         variants.accept(item.variants)
+    }
+    
+    func selectVariant(id:String) {
+        let selectedVariant = variants.value.first(where: {$0.id == id})
+        self.selectedVariant.accept(selectedVariant)
     }
     
     init() {
@@ -61,25 +66,37 @@ class DetailViewModel {
     let addonCategories = BehaviorRelay<[AddonCategory]>(value: [])
     let notes = NotesViewModel()
     
+    //MARK: Private States
+    private let itemDetailUpdatedEvent = PublishSubject<MenuItem>()
+    
     init(itemDetailLoader:ItemDetailLoader, menuItem: ItemViewModel) {
         self.itemDetailLoader = itemDetailLoader
         self.item = BehaviorRelay(value: menuItem)
+        setupItemDetailUpdatedEvent()
     }
     
-    func load() {
-        let itemDetailStream = itemDetailLoader.getItemDetail().share()
-        
-        itemDetailStream
+    private func setupItemDetailUpdatedEvent() {
+        itemDetailUpdatedEvent
             .map{itemDetail in
                 ItemViewModel.map(from: itemDetail)
             }
             .bind(to: item)
             .disposed(by: disposeBag)
         
-        itemDetailStream
+        itemDetailUpdatedEvent
             .subscribe(onNext:{[weak self] itemDetail in
                 self?.variant.updateModel(from: itemDetail)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func load() {
+        itemDetailLoader.getItemDetail()
+            .bind(to: itemDetailUpdatedEvent)
+            .disposed(by: disposeBag)
+    }
+    
+    func selectVariant(id:String) {
+        variant.selectVariant(id: id)
     }
 }
