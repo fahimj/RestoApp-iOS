@@ -148,7 +148,24 @@ class DetailViewController: UIViewController {
     }
     
     private func setupVariantBinding() {
-        //TODO: implementation
+        let picker = UIPickerView()
+        viewModel.variant.variants
+            .bind(to: picker.rx.itemTitles) { (row, element) in
+                return element.name
+            }
+            .disposed(by: disposeBag)
+        
+        picker.rx.modelSelected(Variant.self)
+            .map{$0.first}
+            .bind(to: viewModel.variant.selectedVariant)
+            .disposed(by: disposeBag)
+        
+        viewModel.variant.selectedVariant
+            .map{$0?.name ?? "Select a variant..."}
+            .bind(to: variantTextField.rx.text)
+            .disposed(by: disposeBag)
+        
+        variantTextField.inputView = picker
     }
     
     var dataSource: RxTableViewSectionedAnimatedDataSource<AddonCategoryViewModel>!
