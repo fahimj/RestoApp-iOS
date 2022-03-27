@@ -15,17 +15,35 @@ class MainViewControllerTests: XCTestCase {
     }
     
     func test_initViewController() {
+        let jsonData = getSampleJsonData()
+        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
         let sut = makeSut()
         sut.loadViewIfNeeded()
-//        let jsonData = getSampleJsonData()
-//        URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
-//        XCTAssertEqual(sut.tableView.numberOfSections, 5)
+        wait(for: 0.1)
+        XCTAssertEqual(sut.tableView.numberOfSections, 5)
     }
     
     //MARK: Helpers
+    private func wait(for duration: TimeInterval) {
+        let waitExpectation = expectation(description: "Waiting")
+
+        let when = DispatchTime.now() + duration
+        DispatchQueue.main.asyncAfter(deadline: when) {
+          waitExpectation.fulfill()
+        }
+
+        // We use a buffer here to avoid flakiness with Timer on CI
+        waitForExpectations(timeout: duration + 0.5)
+      }
+    
+    private var iPhone12Frame: CGRect {
+        CGRect(x: 0, y: 0, width: 585, height: 1266)
+    }
+    
     private func makeSut() -> MainViewController {
         let vm = makeHomeViewModel()
         let sut = MainViewController(viewModel: vm)
+        sut.view.frame = iPhone12Frame
         return sut
     }
     
