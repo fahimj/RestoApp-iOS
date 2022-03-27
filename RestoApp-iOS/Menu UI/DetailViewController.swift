@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailViewController: UIViewController {
 
@@ -18,14 +20,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var addonTableView: UITableView!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var charCountLabel: UILabel!
-   
     @IBOutlet weak var decreaseQuantityButton: UIButton!
     @IBOutlet weak var quantityLabel: UITextField!
     @IBOutlet weak var increaseQuantityButton: UIButton!
     @IBOutlet weak var addToCartButton: UIButton!
     @IBOutlet weak var quantityStackView: UIStackView!
     
-    init() {
+    let disposeBag = DisposeBag()
+    let viewModel:DetailViewModel
+    
+    init(detailViewModel:DetailViewModel) {
+        self.viewModel = detailViewModel
+        
         super.init(nibName: "DetailViewController", bundle: nil)
     }
     
@@ -37,6 +43,119 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setupQuantityViewShadow()
         setupButtonViewShadow()
+        setupItemBindings()
+        setupNotesBinding()
+        setupQuantityBinding()
+        setupVariantBinding()
+        setupAddonBinding()
+        setupTagsBinding()
+        
+        viewModel.load()
+    }
+    
+    private func setupItemBindings() {
+        viewModel.item
+            .map{$0.displayedPrice}
+            .bind(to: displayedPriceLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.item
+            .map{$0.name}
+            .bind(to: titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.item
+            .map{$0.description}
+            .bind(to: descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.item
+            .map{$0.description}
+            .bind(to: descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.item
+            .map{$0.originalDisplayedPrice}
+            .map{price in
+                let attributedString = NSMutableAttributedString(string: price)
+                attributedString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedString.length))
+                return attributedString
+            }
+            .bind(to: originalPriceLabel.rx.attributedText)
+            .disposed(by: disposeBag)
+        
+        viewModel.item
+            .map{$0.imageUrl}
+            .flatMap{urlString -> Observable<(response: HTTPURLResponse, data: Data)> in
+                let url = URL.init(string: urlString)
+                let request = URLRequest(url: url!)
+                return URLSession.shared.rx.response(request: request)
+            }
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .map{UIImage(data:$0.data)}
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: {[weak self] image in
+                self?.itemImageView.setImageAnimated(image)
+            })
+            .disposed(by: disposeBag)
+        
+        
+    }
+    
+    private func setupQuantityBinding() {
+        viewModel.isAddToChartEnabled.asDriver().drive(onNext: {[weak self] isEnabled in
+            self?.addToCartButton.isEnabled = isEnabled
+            let blueColor = UIColor.init(hex: 0x0075E3)
+            self?.addToCartButton.backgroundColor = isEnabled ? blueColor : .gray
+        }).disposed(by: disposeBag)
+        
+        viewModel.displayedAddToChartText
+            .bind(to: addToCartButton.rx.title(for: .normal))
+            .disposed(by: disposeBag)
+        
+        viewModel.displayedQuantity
+            .bind(to: quantityLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        increaseQuantityButton.rx.tap
+            .debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: {[weak self] _ in
+                self?.viewModel.incrementQuantity()
+            })
+            .disposed(by: disposeBag)
+        
+        decreaseQuantityButton.rx.tap
+            .debounce(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: {[weak self] _ in
+                self?.viewModel.decrementQuantity()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupNotesBinding() {
+        notesTextView.rx.text.orEmpty.subscribe(onNext: {[weak self] text in
+            self?.viewModel.notes.update(text: text)
+        }).disposed(by: disposeBag)
+        
+        viewModel.notes.noteText
+            .bind(to: notesTextView.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.notes.charCountDisplay
+            .bind(to: charCountLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupVariantBinding() {
+        //TODO: implementation
+    }
+    
+    private func setupAddonBinding() {
+        //TODO: implementation
+    }
+    
+    private func setupTagsBinding() {
+        //TODO: implementation
     }
     
     private func setupQuantityViewShadow() {
@@ -53,5 +172,15 @@ class DetailViewController: UIViewController {
         addToCartButton.layer.shadowOpacity = 0.3
         addToCartButton.layer.cornerRadius = 10
         addToCartButton.layer.borderColor = UIColor.lightGray.cgColor
+    }
+}
+
+extension UIColor {
+    convenience init(hex: UInt32, alpha: CGFloat = 1.0) {
+        let red = CGFloat((hex & 0xFF0000) >> 16)/256.0
+        let green = CGFloat((hex & 0xFF00) >> 8)/256.0
+        let blue = CGFloat(hex & 0xFF)/256.0
+        
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }

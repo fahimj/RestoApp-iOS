@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 //        window.rootViewController = makeMainVC() // Your initial view controller.
-        window.rootViewController = DetailViewController()
+        window.rootViewController = makeDetailVC()
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -53,6 +53,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeMainVC() -> MainViewController {
         let vm = makeHomeViewModel()
         let vc = MainViewController(viewModel: vm)
+        return vc
+    }
+    
+    private func makeDetailVC() -> DetailViewController {
+        let itemVM = ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://i.picsum.photos/id/292/3852/2556.jpg?hmac=cPYEh0I48Xpek2DPFLxTBhlZnKVhQCJsbprR-Awl9lo", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: [
+            "flour",
+            "butter",
+            "egg",
+            "sugar",
+            "rosemary",
+            "bacon"
+        ], displayedPrice: "SGD 3", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
+        let vm = makeDetailViewModel(itemViewModel: itemVM)
+        let vc = DetailViewController(detailViewModel: vm)
         return vc
     }
     

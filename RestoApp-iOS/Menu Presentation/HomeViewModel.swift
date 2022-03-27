@@ -32,9 +32,11 @@ struct ItemViewModel {
     let tags:[String]
     let displayedPrice:String
     let price:Double
+    let originalPrice:Double
+    let originalDisplayedPrice:String
     
     static func map(from menu:MenuItem) -> ItemViewModel {
-        return ItemViewModel(id:menu.id, name: menu.name, imageUrl: menu.imageUrl, description: menu.descriptionField, tags: menu.tags, displayedPrice: "SGD \(menu.price)", price:menu.price)
+        return ItemViewModel(id:menu.id, name: menu.name, imageUrl: menu.imageUrl, description: menu.descriptionField, tags: menu.tags, displayedPrice: "SGD \(menu.displayPrice)", price:menu.displayPrice, originalPrice: menu.price, originalDisplayedPrice: "SGD \(menu.price)")
     }
 }
 

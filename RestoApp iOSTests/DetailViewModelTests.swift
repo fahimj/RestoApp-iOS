@@ -24,7 +24,7 @@ class DetailViewModelTests: XCTestCase {
             "sugar",
             "rosemary",
             "bacon"
-        ], displayedPrice: "SGD 3", price: 3)
+        ], displayedPrice: "SGD 3", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
         
         expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
             let jsonData = getSampleJsonData()
@@ -115,7 +115,7 @@ class DetailViewModelTests: XCTestCase {
             "sugar",
             "rosemary",
             "bacon"
-        ], displayedPrice: "SGD 3", price: 3)
+        ], displayedPrice: "SGD 3", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
 
         expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
             let jsonData = getSampleJsonData()
@@ -138,7 +138,7 @@ class DetailViewModelTests: XCTestCase {
             "sugar",
             "rosemary",
             "bacon"
-        ], displayedPrice: "SGD 3", price: 3)
+        ], displayedPrice: "SGD 3", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
 
         expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
             let jsonData = getSampleJsonData()
@@ -216,7 +216,7 @@ class DetailViewModelTests: XCTestCase {
     }
     
     private func makeItemViewModel() -> ItemViewModel {
-        ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://picsum.photos/id/1000/5626/3635", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: ["any","tags"], displayedPrice: "3 SGD", price: 3)
+        ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://picsum.photos/id/1000/5626/3635", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: ["any","tags"], displayedPrice: "3 SGD", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
     }
     
     private func makeRemoteItemDetailLoader(file: StaticString = #filePath, line: UInt = #line) -> RemoteItemDetailLoader {
