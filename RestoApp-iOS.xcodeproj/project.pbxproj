@@ -48,6 +48,8 @@
 		CF7C485D27EFE6190017F965 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C485C27EFE6190017F965 /* DetailViewModelTests.swift */; };
 		CF7C485F27EFE66A0017F965 /* DetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C485E27EFE66A0017F965 /* DetailLoader.swift */; };
 		CF7C486227F015340017F965 /* DetailViewModelTests+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486027F014D90017F965 /* DetailViewModelTests+Specs.swift */; };
+		CF7C486527F05D050017F965 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486327F05D050017F965 /* DetailViewController.swift */; };
+		CF7C486627F05D050017F965 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C486427F05D050017F965 /* DetailViewController.xib */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		CF7C485C27EFE6190017F965 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		CF7C485E27EFE66A0017F965 /* DetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLoader.swift; sourceTree = "<group>"; };
 		CF7C486027F014D90017F965 /* DetailViewModelTests+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewModelTests+Specs.swift"; sourceTree = "<group>"; };
+		CF7C486327F05D050017F965 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CF7C486427F05D050017F965 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -168,8 +172,6 @@
 				CF1ACD0927E580C9004270F9 /* Menu API */,
 				CF5C7C5227E385F200AAC862 /* AppDelegate.swift */,
 				CF5C7C5427E385F200AAC862 /* SceneDelegate.swift */,
-				CFD2031E27E40345004B69B3 /* MainViewController.swift */,
-				CFD2031F27E40345004B69B3 /* MainViewController.xib */,
 				CF5C7C5B27E385F300AAC862 /* Assets.xcassets */,
 				CF5C7C5D27E385F300AAC862 /* LaunchScreen.storyboard */,
 				CF5C7C6027E385F300AAC862 /* Info.plist */,
@@ -236,6 +238,10 @@
 				CF7C484127EF5FE70017F965 /* MenuItemTableViewCell.xib */,
 				CF7C484E27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift */,
 				CF7C485027EF6C5A0017F965 /* UIView+Nib.swift */,
+				CF7C486327F05D050017F965 /* DetailViewController.swift */,
+				CF7C486427F05D050017F965 /* DetailViewController.xib */,
+				CFD2031E27E40345004B69B3 /* MainViewController.swift */,
+				CFD2031F27E40345004B69B3 /* MainViewController.xib */,
 			);
 			path = "Menu UI";
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			files = (
 				CF5C7C5F27E385F300AAC862 /* LaunchScreen.storyboard in Resources */,
 				CF7C484327EF5FE70017F965 /* MenuItemTableViewCell.xib in Resources */,
+				CF7C486627F05D050017F965 /* DetailViewController.xib in Resources */,
 				CF5C7C5C27E385F300AAC862 /* Assets.xcassets in Resources */,
 				CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */,
 			);
@@ -361,6 +368,7 @@
 				CF7C484F27EF6C300017F965 /* CategoryViewModel+AnimatableSectionModelType.swift in Sources */,
 				CF7C482A27EF36450017F965 /* MenuLoader.swift in Sources */,
 				CF1ACD1227E587F9004270F9 /* HomeDtoMapper.swift in Sources */,
+				CF7C486527F05D050017F965 /* DetailViewController.swift in Sources */,
 				CF7C483027EF36DB0017F965 /* AddonCategory.swift in Sources */,
 				CF7C485B27EFE5F10017F965 /* DetailViewModel.swift in Sources */,
 				CF7C481327EEF4490017F965 /* RemoteMenuLoader.swift in Sources */,

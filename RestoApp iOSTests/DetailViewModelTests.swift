@@ -127,7 +127,6 @@ class DetailViewModelTests: XCTestCase {
             
             sut.addonCategories.value.last!.addons.value.last!.isSelected.accept(true)
             sut.addonCategories.value.last!.addons.value.first!.isSelected.accept(true)
-
         })
     }
     
