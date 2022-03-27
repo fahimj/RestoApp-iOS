@@ -58,6 +58,7 @@
 		CF7C487327F0B4B80017F965 /* TableViewAdjustedHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C487227F0B4B80017F965 /* TableViewAdjustedHeight.swift */; };
 		CF7C487527F0B4D60017F965 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C487427F0B4D60017F965 /* UIColor+Hex.swift */; };
 		CF7C487D27F0BE720017F965 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF7C487C27F0BE720017F965 /* IQKeyboardManagerSwift */; };
+		CF7C488027F0C39E0017F965 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = CF7C487F27F0C39E0017F965 /* TagListView */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -135,6 +136,7 @@
 				CF7C480F27EEF4270017F965 /* RxRelay in Frameworks */,
 				CF7C484B27EF66600017F965 /* RxDataSources in Frameworks */,
 				CF7C480D27EEF4270017F965 /* RxCocoa in Frameworks */,
+				CF7C488027F0C39E0017F965 /* TagListView in Frameworks */,
 				CF7C487D27F0BE720017F965 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +302,7 @@
 				CF7C484827EF66600017F965 /* Differentiator */,
 				CF7C484A27EF66600017F965 /* RxDataSources */,
 				CF7C487C27F0BE720017F965 /* IQKeyboardManagerSwift */,
+				CF7C487F27F0C39E0017F965 /* TagListView */,
 			);
 			productName = "RestoApp iOS";
 			productReference = CF5C7C4F27E385F200AAC862 /* RestoApp-iOS.app */;
@@ -355,6 +358,7 @@
 				CF7C480B27EEF4270017F965 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CF7C484727EF66600017F965 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				CF7C487B27F0BE720017F965 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				CF7C487E27F0C39E0017F965 /* XCRemoteSwiftPackageReference "TagListView" */,
 			);
 			productRefGroup = CF5C7C5027E385F200AAC862 /* Products */;
 			projectDirPath = "";
@@ -757,6 +761,14 @@
 				version = 6.5.0;
 			};
 		};
+		CF7C487E27F0C39E0017F965 /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -789,6 +801,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF7C487B27F0BE720017F965 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		CF7C487F27F0C39E0017F965 /* TagListView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF7C487E27F0C39E0017F965 /* XCRemoteSwiftPackageReference "TagListView" */;
+			productName = TagListView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

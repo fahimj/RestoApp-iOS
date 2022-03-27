@@ -9,9 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import TagListView
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var tagView: TagListView!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -190,7 +192,19 @@ class DetailViewController: UIViewController {
     }
     
     private func setupTagsBinding() {
-        //TODO: implementation
+        tagView.textFont = UIFont.systemFont(ofSize: 12)
+        tagView.alignment = .leading
+        tagView.minWidth = 57
+        
+        viewModel.item
+            .map{$0.tags}
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: {[weak tagView] tags in
+                tagView?.removeAllTags()
+                tagView?.addTags(tags)
+            })
+            .disposed(by: disposeBag)
+
     }
     
     private func setupQuantityViewShadow() {

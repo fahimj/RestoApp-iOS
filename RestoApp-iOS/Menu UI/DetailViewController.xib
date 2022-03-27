@@ -23,6 +23,7 @@
                 <outlet property="originalPriceLabel" destination="oOy-BI-azC" id="5ep-fL-KAd"/>
                 <outlet property="quantityLabel" destination="AvE-8i-y9S" id="p0X-zI-JVe"/>
                 <outlet property="quantityStackView" destination="VFs-Ex-uRo" id="SKa-tn-2Yn"/>
+                <outlet property="tagView" destination="H0B-UV-hkt" id="e5G-sf-7SF"/>
                 <outlet property="titleLabel" destination="gXv-v5-BYG" id="iK1-lM-YQJ"/>
                 <outlet property="variantTextField" destination="nh1-na-ohN" id="y6d-dS-ODg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -68,12 +69,26 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0B-UV-hkt">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0B-UV-hkt" customClass="TagListView" customModule="TagListView">
                                     <rect key="frame" x="16" y="275.5" width="382" height="38"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="38" id="erx-TH-w78"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                            <color key="value" red="0.27058823529411763" green="0.45882352941176469" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                                            <color key="value" red="0.85098040100000005" green="0.89019608500000003" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                            <color key="value" red="0.27058823529411763" green="0.45882352941176469" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Variants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXl-Ds-z02">
                                     <rect key="frame" x="16" y="370.5" width="382" height="18"/>
