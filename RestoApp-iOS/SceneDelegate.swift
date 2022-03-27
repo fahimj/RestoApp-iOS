@@ -49,22 +49,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-    //MARK: Helpers
+    //MARK: Composition
     private func makeMainVC() -> MainViewController {
         let vm = makeHomeViewModel()
-        let vc = MainViewController(viewModel: vm)
+        let vc = MainViewController(viewModel: vm, menuSelection: navigateToDetailVC(itemVM:))
         return vc
     }
     
-    private func makeDetailVC() -> DetailViewController {
-        let itemVM = ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://i.picsum.photos/id/292/3852/2556.jpg?hmac=cPYEh0I48Xpek2DPFLxTBhlZnKVhQCJsbprR-Awl9lo", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: [
-            "flour",
-            "butter",
-            "egg",
-            "sugar",
-            "rosemary",
-            "bacon"
-        ], displayedPrice: "SGD 3", price: 3, originalPrice: 3, originalDisplayedPrice: "SGD 3")
+    private func navigateToDetailVC(itemVM:ItemViewModel) {
+        let vc = makeDetailVC(itemVM: itemVM)
+        self.window?.rootViewController?.show(vc, sender: self)
+    }
+    
+    private func makeDetailVC(itemVM:ItemViewModel) -> DetailViewController {
         let vm = makeDetailViewModel(itemViewModel: itemVM)
         let vc = DetailViewController(detailViewModel: vm)
         return vc

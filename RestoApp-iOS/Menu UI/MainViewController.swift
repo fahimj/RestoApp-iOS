@@ -13,9 +13,11 @@ import RxCocoa
 class MainViewController: UITableViewController {
     let disposeBag = DisposeBag()
     let viewModel:HomeViewModel
+    let menuSelection: (ItemViewModel) -> Void
     
-    init(viewModel:HomeViewModel) {
+    init(viewModel:HomeViewModel, menuSelection: @escaping (ItemViewModel) -> Void = {_ in }) {
         self.viewModel = viewModel
+        self.menuSelection = menuSelection
         super.init(nibName: "MainViewController", bundle: nil)
     }
    
@@ -32,33 +34,14 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-//
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 50
-//    }
-
-    // MARK: - Table view data source
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell : UITableViewCell!
-//        cell = tableView.dequeueReusableCell(withIdentifier: "TEST")
-//        if cell == nil {
-//            cell = UITableViewCell(style: .default, reuseIdentifier: "TEST")
-//        }
-//
-//        cell.textLabel?.text = "TEST"
-//        return cell
-//    }
-//
+    
     //MARK: Table View Configuration
     
-//    typealias CategorySectionModel = AnimatableSectionModel<String, CategoryViewModel>
     var dataSource: RxTableViewSectionedAnimatedDataSource<CategoryViewModel>!
     
     private func setupDataSource() {
-//        tableView.delegate = nil
         tableView.dataSource = nil
         
-//        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.register(MenuItemTableViewCell.nib, forCellReuseIdentifier: MenuItemTableViewCell.identifier)
         tableView.separatorStyle = .none
         dataSource = RxTableViewSectionedAnimatedDataSource<CategoryViewModel> { (_, tableView, indexPath, item) in
@@ -75,15 +58,16 @@ class MainViewController: UITableViewController {
         
         viewModel.categoryViewModels
             .skip(1)
-//            .distinctUntilChanged()
             .asDriver(onErrorJustReturn: [])
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+    
+        tableView.rx.modelSelected(ItemViewModel.self).subscribe(onNext: {[weak self] item in
+            self?.menuSelection(item)
+        }).disposed(by: disposeBag)
         
-//        tableView.rx.itemSelected.subscribe(onNext: {[weak self] indexPath in
-//            guard let categoryVM = self?.viewModel.displayedItems.value[indexPath.row] else {return}
-//            categoryVM.toggleCollapseStateChildren()
-//            self?.viewModel.chooseCategory(categoryViewModel: categoryVM)
-//        }).disposed(by: disposeBag)
+        tableView.rx.itemSelected.subscribe(onNext: {[weak self] indexPath in
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+        }).disposed(by: disposeBag)
     }
 }
