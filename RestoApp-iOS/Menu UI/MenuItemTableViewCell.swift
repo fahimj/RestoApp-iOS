@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import TagListView
 
 class MenuItemTableViewCell: UITableViewCell {
     var disposeBag = DisposeBag()
@@ -17,10 +18,12 @@ class MenuItemTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var displayedPriceLabel: UILabel!
+    @IBOutlet weak var tagListView: TagListView!
     
     override func prepareForReuse() {
         disposeBag = DisposeBag()
         itemImageView.image = nil
+        tagListView.removeAllTags()
     }
 
     override func awakeFromNib() {
@@ -45,6 +48,7 @@ class MenuItemTableViewCell: UITableViewCell {
         titleLabel.text = menuViewModel.name
         descriptionLabel.text = menuViewModel.description
         displayedPriceLabel.text = menuViewModel.displayedPrice
+        tagListView.addTags(menuViewModel.tags)
         
         let url = URL.init(string: menuViewModel.imageUrl)
         let request = URLRequest(url: url!)
