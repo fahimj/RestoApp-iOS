@@ -54,6 +54,22 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
+    func test_load_AddonStateUpdated() {
+        let expectedAddonStates:[[AddonCategoryViewModel]] = [
+            [],
+            [AddonCategoryViewModel.createModel(from: AddonCategory(id: "sauce", name: "Sauce", addons: [anyAddon(),anyAddon()])),
+             AddonCategoryViewModel.createModel(from: AddonCategory(id: "extra_side_dish_a", name: "Extra Side Dish", addons: [anyAddon(),anyAddon()])),
+             AddonCategoryViewModel.createModel(from: AddonCategory(id: "extra_side_dish_b", name: "Extra Side Dish", addons: [anyAddon(),anyAddon()]))
+            ]
+        ]
+        let sut = makeSut()
+        expect(sut, toCompleteWithAddonCategoryStates: expectedAddonStates, when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+            sut.load()
+        })
+    }
+    
     //MARK: Helpers
     private func makeSut() -> DetailViewModel {
         let itemDetailLoader = makeRemoteItemDetailLoader()
@@ -180,14 +196,14 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
-    private func expect(_ sut: HomeViewModel, toCompleteWithCategoryHeadersStates expectedCategoriesStates:[[CategoryHeaderViewModel]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let expectationFullfillmentCount = expectedCategoriesStates.count
+    private func expect(_ sut: DetailViewModel, toCompleteWithAddonCategoryStates expectedStates:[[AddonCategoryViewModel]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let expectationFullfillmentCount = expectedStates.count
         let disposeBag = DisposeBag()
-        var capturedCategoryResults:[[CategoryHeaderViewModel]] = []
+        var capturedResults:[[AddonCategoryViewModel]] = []
         let exp = expectation(description: "wait for getting states")
         exp.expectedFulfillmentCount = expectationFullfillmentCount
-        sut.categoryHeaderViewModels.subscribe(onNext: {items in
-            capturedCategoryResults.append(items)
+        sut.addonCategories.subscribe(onNext: {items in
+            capturedResults.append(items)
             exp.fulfill()
         }, onError: {error in
             XCTFail("unexpected error \(error)")
@@ -197,22 +213,31 @@ class DetailViewModelTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         //assertion
-        XCTAssertEqual(capturedCategoryResults.map{result in
+        XCTAssertEqual(capturedResults.count, expectedStates.count)
+        XCTAssertEqual(capturedResults.map{result in
             result.map{$0.name}
-        }, expectedCategoriesStates.map{result in
+        }, expectedStates.map{result in
             result.map{$0.name}
+        })
+        XCTAssertEqual(capturedResults.map{result in
+            result.map{$0.addons.value.count}
+        }, expectedStates.map{result in
+            result.map{$0.addons.value.count}
         })
     }
     
     private func wait(for duration: TimeInterval) {
         let waitExpectation = expectation(description: "Waiting")
-
+        
         let when = DispatchTime.now() + duration
         DispatchQueue.main.asyncAfter(deadline: when) {
-          waitExpectation.fulfill()
+            waitExpectation.fulfill()
         }
-
+        
         // We use a buffer here to avoid flakiness with Timer on CI
         waitForExpectations(timeout: duration + 0.5)
-      }
+    }
+    private func anyAddon() -> Addon {
+        Addon(id: "any addon", name: "any addon", additionalPrice: 1)
+    }
 }

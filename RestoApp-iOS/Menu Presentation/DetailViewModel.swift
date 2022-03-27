@@ -13,7 +13,7 @@ import RxSwift
 //
 //}
 
-class VariantViewModel {
+struct VariantViewModel {
     let disposeBag = DisposeBag()
     let variants:BehaviorRelay<[Variant]> = BehaviorRelay(value: [])
     let selectedVariant:BehaviorRelay<Variant?> = BehaviorRelay(value: nil)
@@ -37,16 +37,21 @@ class VariantViewModel {
 
 struct AddonCategoryViewModel {
     let name:String
-    let addons:BehaviorRelay<[AddonViewModel]> = BehaviorRelay(value: [])
+    let addons:BehaviorRelay<[AddonViewModel]>
     
-//    func updateModel(from item: MenuItem) {
-//        item.a
-//    }
+    static func createModel(from addonCategory: AddonCategory) -> AddonCategoryViewModel {
+        let name = addonCategory.name
+        let addonsVM = addonCategory.addons.map{addon in
+            return AddonViewModel(name: addon.name, price: addon.additionalPrice, displayedPrice: "SGD \(addon.additionalPrice)")
+        }
+        return AddonCategoryViewModel(name: name, addons: BehaviorRelay(value: addonsVM))
+    }
 }
 
 struct AddonViewModel {
     let name:String
-    let price:String
+    let price:Double
+    let displayedPrice:String
     let isSelected:BehaviorRelay<Bool> = BehaviorRelay(value: false)
 }
 
@@ -63,7 +68,7 @@ class DetailViewModel {
     //MARK: States
     let item:BehaviorRelay<ItemViewModel>
     let variant = VariantViewModel()
-    let addonCategories = BehaviorRelay<[AddonCategory]>(value: [])
+    let addonCategories = BehaviorRelay<[AddonCategoryViewModel]>(value: [])
     let notes = NotesViewModel()
     
     //MARK: Private States
@@ -87,6 +92,16 @@ class DetailViewModel {
             .subscribe(onNext:{[weak self] itemDetail in
                 self?.variant.updateModel(from: itemDetail)
             })
+            .disposed(by: disposeBag)
+        
+        itemDetailUpdatedEvent
+            .map{$0.addOnCategories}
+            .map{addonCategories in
+                addonCategories.map{
+                    AddonCategoryViewModel.createModel(from: $0)
+                }
+            }
+            .bind(to: addonCategories)
             .disposed(by: disposeBag)
     }
     
