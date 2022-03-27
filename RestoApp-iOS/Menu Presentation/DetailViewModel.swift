@@ -56,8 +56,28 @@ struct AddonViewModel {
 }
 
 struct NotesViewModel {
-    let notes:BehaviorRelay<String> = BehaviorRelay(value: "")
-    let wordCountDisplay:BehaviorRelay<String> = BehaviorRelay(value: "")
+    private let disposeBag = DisposeBag()
+    
+    let noteText:BehaviorRelay<String> = BehaviorRelay(value: "")
+    let charCountDisplay:BehaviorRelay<String> = BehaviorRelay(value: "")
+    
+    // TODO: Validation rule can be moved to domain model
+    private let maxNotesCharCount = 200
+    
+    init() {
+        noteText.map{"\($0.count) / 200"}
+            .bind(to: charCountDisplay)
+            .disposed(by: disposeBag)
+    }
+    
+    func update(text: String) {
+        let wordCount = text.count
+        if wordCount > maxNotesCharCount {
+            noteText.accept(String(text.prefix(maxNotesCharCount)))
+        } else {
+            noteText.accept(text)
+        }
+    }
 }
 
 class DetailViewModel {

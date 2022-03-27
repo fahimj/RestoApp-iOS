@@ -70,6 +70,42 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
+    func test_addNote_textNoteStateUpdate() {
+        let sut = makeSut()
+        
+        let stringWith200Chars = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu"
+        let stringWith201Chars = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qux"
+        let expectedTextNoteStates = [
+            "",
+            "tes 1 2 3",
+            "tes 1 2 3 4",
+            stringWith200Chars
+        ]
+        expect(sut, toCompleteWithSelectedTextNoteStates: expectedTextNoteStates, when: {
+            sut.notes.update(text: "tes 1 2 3")
+            sut.notes.update(text: "tes 1 2 3 4")
+            sut.notes.update(text: stringWith201Chars)
+        })
+    }
+    
+    func test_addNote_charCountStateUpdate() {
+        let sut = makeSut()
+        
+        let stringWith200Chars = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu"
+        let stringWith201Chars = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qux"
+        
+        expect(sut, toCompleteWithCharCountStates: [
+            "0 / 200",
+            "9 / 200",
+            "200 / 200",
+            "200 / 200"
+        ], when: {
+            sut.notes.update(text: "tes 1 2 3")
+            sut.notes.update(text: stringWith200Chars)
+            sut.notes.update(text: stringWith201Chars)
+        })
+    }
+    
     //MARK: Helpers
     private func makeSut() -> DetailViewModel {
         let itemDetailLoader = makeRemoteItemDetailLoader()
@@ -104,126 +140,6 @@ class DetailViewModelTests: XCTestCase {
         let path = bundle.path(forResource: "detail", ofType: "json")!
         let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
         return data
-    }
-    
-    private func expect(_ sut: DetailViewModel, toCompleteWithItemStates expectedItemStates:[ItemViewModel], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let expectationFullfillmentCount = expectedItemStates.count
-        let disposeBag = DisposeBag()
-        var capturedResults:[ItemViewModel] = []
-        let exp = expectation(description: "wait for getting states")
-        exp.expectedFulfillmentCount = expectationFullfillmentCount
-        sut.item.subscribe(onNext: {items in
-            capturedResults.append(items)
-            exp.fulfill()
-        }, onError: {error in
-            XCTFail("unexpected error \(error)")
-        }).disposed(by: disposeBag)
-        
-        action()
-        wait(for: [exp], timeout: 1.0)
-        
-        //assertion
-        XCTAssertEqual(capturedResults.count, expectedItemStates.count)
-        XCTAssertEqual(capturedResults.map{result in
-            result.name
-        }, expectedItemStates.map{result in
-            result.name
-        })
-        XCTAssertEqual(capturedResults.map{result in
-            result.id
-        }, expectedItemStates.map{result in
-            result.id
-        })
-    }
-    
-    private func expect(_ sut: DetailViewModel, toCompleteWithVariantStates expectedItemStates:[[Variant]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let expectationFullfillmentCount = expectedItemStates.count
-        let disposeBag = DisposeBag()
-        var capturedResults:[[Variant]] = []
-        let exp = expectation(description: "wait for getting states")
-        exp.expectedFulfillmentCount = expectationFullfillmentCount
-        sut.variant.variants.subscribe(onNext: {items in
-            capturedResults.append(items)
-            exp.fulfill()
-        }, onError: {error in
-            XCTFail("unexpected error \(error)")
-        }).disposed(by: disposeBag)
-        
-        action()
-        wait(for: [exp], timeout: 1.0)
-        
-        //assertion
-        XCTAssertEqual(capturedResults.count, expectedItemStates.count)
-        XCTAssertEqual(capturedResults.map{result in
-            result.map{$0.id}
-        }, expectedItemStates.map{result in
-            result.map{$0.id}
-        })
-        XCTAssertEqual(capturedResults.map{result in
-            result.map{$0.name}
-        }, expectedItemStates.map{result in
-            result.map{$0.name}
-        })
-    }
-    
-    private func expect(_ sut: DetailViewModel, toCompleteWithSelectedVariantStates expectedStates:[Variant?], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let expectationFullfillmentCount = expectedStates.count
-        let disposeBag = DisposeBag()
-        var capturedResults:[Variant?] = []
-        let exp = expectation(description: "wait for getting states")
-        exp.expectedFulfillmentCount = expectationFullfillmentCount
-        sut.variant.selectedVariant.subscribe(onNext: {items in
-            capturedResults.append(items)
-            exp.fulfill()
-        }, onError: {error in
-            XCTFail("unexpected error \(error)")
-        }).disposed(by: disposeBag)
-        
-        action()
-        wait(for: [exp], timeout: 1.0)
-        
-        //assertion
-        XCTAssertEqual(capturedResults.count, expectedStates.count)
-        XCTAssertEqual(capturedResults.map{result in
-            result?.name
-        }, expectedStates.map{result in
-            result?.name
-        })
-        XCTAssertEqual(capturedResults.map{result in
-            result?.id
-        }, expectedStates.map{result in
-            result?.id
-        })
-    }
-    
-    private func expect(_ sut: DetailViewModel, toCompleteWithAddonCategoryStates expectedStates:[[AddonCategoryViewModel]], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
-        let expectationFullfillmentCount = expectedStates.count
-        let disposeBag = DisposeBag()
-        var capturedResults:[[AddonCategoryViewModel]] = []
-        let exp = expectation(description: "wait for getting states")
-        exp.expectedFulfillmentCount = expectationFullfillmentCount
-        sut.addonCategories.subscribe(onNext: {items in
-            capturedResults.append(items)
-            exp.fulfill()
-        }, onError: {error in
-            XCTFail("unexpected error \(error)")
-        }).disposed(by: disposeBag)
-        
-        action()
-        wait(for: [exp], timeout: 1.0)
-        
-        //assertion
-        XCTAssertEqual(capturedResults.count, expectedStates.count)
-        XCTAssertEqual(capturedResults.map{result in
-            result.map{$0.name}
-        }, expectedStates.map{result in
-            result.map{$0.name}
-        })
-        XCTAssertEqual(capturedResults.map{result in
-            result.map{$0.addons.value.count}
-        }, expectedStates.map{result in
-            result.map{$0.addons.value.count}
-        })
     }
     
     private func wait(for duration: TimeInterval) {
