@@ -50,6 +50,7 @@
 		CF7C486227F015340017F965 /* DetailViewModelTests+Specs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486027F014D90017F965 /* DetailViewModelTests+Specs.swift */; };
 		CF7C486527F05D050017F965 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486327F05D050017F965 /* DetailViewController.swift */; };
 		CF7C486627F05D050017F965 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF7C486427F05D050017F965 /* DetailViewController.xib */; };
+		CF7C486827F095CA0017F965 /* DetailJsonSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C486727F095CA0017F965 /* DetailJsonSample.swift */; };
 		CFD2032027E40345004B69B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2031E27E40345004B69B3 /* MainViewController.swift */; };
 		CFD2032127E40345004B69B3 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFD2031F27E40345004B69B3 /* MainViewController.xib */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		CF7C486027F014D90017F965 /* DetailViewModelTests+Specs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewModelTests+Specs.swift"; sourceTree = "<group>"; };
 		CF7C486327F05D050017F965 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CF7C486427F05D050017F965 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		CF7C486727F095CA0017F965 /* DetailJsonSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailJsonSample.swift; sourceTree = "<group>"; };
 		CFD2031E27E40345004B69B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CFD2031F27E40345004B69B3 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		CFDDE14727ED4D3B001517AD /* detail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = detail.json; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				CF7C481E27EEFAFF0017F965 /* XCTest+MemoryLeakTracking.swift */,
 				CF7C482027EEFB1F0017F965 /* SharedTestHelpers.swift */,
 				CF7C486027F014D90017F965 /* DetailViewModelTests+Specs.swift */,
+				CF7C486727F095CA0017F965 /* DetailJsonSample.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				CF7C483227EF36EB0017F965 /* Addon.swift in Sources */,
 				CF7C484227EF5FE70017F965 /* MenuItemTableViewCell.swift in Sources */,
 				CF7C483727EF38E40017F965 /* HomeViewModel.swift in Sources */,
+				CF7C486827F095CA0017F965 /* DetailJsonSample.swift in Sources */,
 				CF7C482C27EF36AF0017F965 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

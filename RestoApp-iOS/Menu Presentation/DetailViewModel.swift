@@ -111,6 +111,7 @@ class DetailViewModel {
         self.item = BehaviorRelay(value: menuItem)
         setupItemDetailUpdatedEvent()
         setupAddonSelectionBinding()
+        setupQuantityBindingEvent()
     }
     
     private func setupAddonSelectionBinding() {
@@ -129,7 +130,13 @@ class DetailViewModel {
             }
         }).disposed(by: disposeBag)
         
-        totalPrice.map{"Add to Cart - SGD \($0)"}
+        totalPrice.filter{$0 > 0}
+            .map{"Add to Cart - SGD \($0)"}
+            .bind(to: displayedAddToChartText)
+            .disposed(by: disposeBag)
+        
+        totalPrice.filter{$0 == 0}
+            .map{_ in "Add to Cart"}
             .bind(to: displayedAddToChartText)
             .disposed(by: disposeBag)
     }
@@ -142,7 +149,6 @@ class DetailViewModel {
             .filter{$0.isSelected.value}
             .reduce(0, {$0 + $1.price})
         totalPrice.accept((item.value.price + selectedAddonsTotalPrice) * Double(quantity.value))
-        
     }
     
     private func setupItemDetailUpdatedEvent() {
@@ -171,6 +177,22 @@ class DetailViewModel {
             .disposed(by: disposeBag)
     }
     
+    private func setupQuantityBindingEvent() {
+        quantity.map{"\($0)"}
+            .bind(to: displayedQuantity)
+            .disposed(by: disposeBag)
+        
+        quantity.map{$0 > 0}
+            .bind(to: isAddToChartEnabled)
+            .disposed(by: disposeBag)
+        
+        quantity
+            .subscribe(onNext: {[weak self] _ in
+                self?.calculateTotalPrice()
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func load() {
         itemDetailLoader.getItemDetail()
             .bind(to: itemDetailUpdatedEvent)
@@ -179,5 +201,15 @@ class DetailViewModel {
     
     func selectVariant(id:String) {
         variant.selectVariant(id: id)
+    }
+    
+    func incrementQuantity() {
+        quantity.accept(quantity.value + 1)
+    }
+    
+    func decrementQuantity() {
+        guard quantity.value > 0 else {return}
+        quantity.accept(quantity.value - 1)
+        
     }
 }

@@ -123,10 +123,44 @@ class DetailViewModelTests: XCTestCase {
             sut.load()
         })
 
-        expect(sut, toCompleteWithDisplayedAddToChartTextStates: ["Add to Cart - SGD 3.0", "Add to Cart - SGD 8.0", "Add to Cart - SGD 10.0"], when: {
+        expect(sut, toCompleteWithDisplayedAddToChartTextStates: ["Add to Cart - SGD 3.0", "Add to Cart - SGD 8.0"], when: {
             
             sut.addonCategories.value.last!.addons.value.last!.isSelected.accept(true)
-            sut.addonCategories.value.last!.addons.value.first!.isSelected.accept(true)
+        })
+    }
+    
+    func test_increment_totalPriceUpdated() {
+        let sut = makeSut()
+        let expectedNewItemViewModel = ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://i.picsum.photos/id/292/3852/2556.jpg?hmac=cPYEh0I48Xpek2DPFLxTBhlZnKVhQCJsbprR-Awl9lo", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: [
+            "flour",
+            "butter",
+            "egg",
+            "sugar",
+            "rosemary",
+            "bacon"
+        ], displayedPrice: "SGD 3", price: 3)
+
+        expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+            sut.load()
+        })
+        
+        expect(sut, toCompleteWithDisplayedAddToChartTextStates: [
+            "Add to Cart - SGD 3.0",
+            "Add to Cart - SGD 6.0",
+            "Add to Cart - SGD 9.0",
+            "Add to Cart - SGD 24.0",
+            "Add to Cart - SGD 16.0",
+            "Add to Cart - SGD 8.0",
+            "Add to Cart"
+        ], when: {
+            sut.incrementQuantity()
+            sut.incrementQuantity()
+            sut.addonCategories.value.last!.addons.value.last!.isSelected.accept(true)
+            sut.decrementQuantity()
+            sut.decrementQuantity()
+            sut.decrementQuantity()
         })
     }
     
@@ -203,10 +237,7 @@ class DetailViewModelTests: XCTestCase {
     }
     
     private func getSampleJsonData() -> Data {
-        let bundle = Bundle(for: type(of: self))
-        let path = bundle.path(forResource: "detail", ofType: "json")!
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-        return data
+        return DetailJsonSample.text.data(using: .utf8)!
     }
     
     private func wait(for duration: TimeInterval) {

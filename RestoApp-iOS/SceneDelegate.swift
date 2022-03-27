@@ -72,6 +72,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = UrlSessionHttpClient(session: URLSession.shared)
         return client
     }
-
+    
+    private func makeDetailViewModel(itemViewModel:ItemViewModel) -> DetailViewModel {
+        let itemDetailLoader = makeRemoteItemDetailLoader()
+        let sut = DetailViewModel(itemDetailLoader: itemDetailLoader, menuItem: itemViewModel)
+        return sut
+    }
+    
+    private func makeRemoteItemDetailLoader() -> RemoteItemDetailLoader {
+        let httpClient = makeHttpClient()
+        let remoteMenuLoader = RemoteItemDetailLoader(httpClient: httpClient)
+        return remoteMenuLoader
+    }
 }
 
