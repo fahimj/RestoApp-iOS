@@ -44,7 +44,7 @@ class MenuItemTableViewCell: UITableViewCell {
     func bindData(menuViewModel: ItemViewModel) {
         titleLabel.text = menuViewModel.name
         descriptionLabel.text = menuViewModel.description
-        displayedPriceLabel.text = menuViewModel.price
+        displayedPriceLabel.text = menuViewModel.displayedPrice
         
         let url = URL.init(string: menuViewModel.imageUrl)
         let request = URLRequest(url: url!)

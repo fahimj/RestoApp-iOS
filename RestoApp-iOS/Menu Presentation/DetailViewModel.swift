@@ -9,10 +9,6 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-//struct ItemDetailViewModel {
-//
-//}
-
 struct VariantViewModel {
     let disposeBag = DisposeBag()
     let variants:BehaviorRelay<[Variant]> = BehaviorRelay(value: [])
@@ -49,10 +45,21 @@ struct AddonCategoryViewModel {
 }
 
 struct AddonViewModel {
+    let disposeBag = DisposeBag()
     let name:String
     let price:Double
     let displayedPrice:String
     let isSelected:BehaviorRelay<Bool> = BehaviorRelay(value: false)
+    
+//    init(name:String, price:Double, displayedPrice:String) {
+//        self.name = name
+//        self.price = price
+//        self.displayedPrice = displayedPrice
+//    }
+//
+//    deinit {
+//        print("DEINIT")
+//    }
 }
 
 struct NotesViewModel {
@@ -90,14 +97,52 @@ class DetailViewModel {
     let variant = VariantViewModel()
     let addonCategories = BehaviorRelay<[AddonCategoryViewModel]>(value: [])
     let notes = NotesViewModel()
+    let isAddToChartEnabled = BehaviorRelay<Bool>(value: true)
+    let displayedAddToChartText = BehaviorRelay<String>(value: "")
+    let displayedQuantity = BehaviorRelay<String>(value: "1")
     
     //MARK: Private States
     private let itemDetailUpdatedEvent = PublishSubject<MenuItem>()
+    private let totalPrice = BehaviorRelay<Double>(value: 0)
+    private let quantity = BehaviorRelay<Int>(value: 1)
     
     init(itemDetailLoader:ItemDetailLoader, menuItem: ItemViewModel) {
         self.itemDetailLoader = itemDetailLoader
         self.item = BehaviorRelay(value: menuItem)
         setupItemDetailUpdatedEvent()
+        setupAddonSelectionBinding()
+    }
+    
+    private func setupAddonSelectionBinding() {
+        addonCategories.subscribe(onNext:{[weak self] addonCategories in
+//            addonCategories.compactMap{$0.addons}.flatMap{$0.value}.forEach{vm in
+//                vm.isSelected.subscribe(onNext: {[weak self] isSelected in
+//                    self?.calculateTotalPrice()
+//                }).disposed(by: vm.disposeBag)
+//            }
+            addonCategories.forEach{addonCategory in
+                addonCategory.addons.value.forEach{addonVM in
+                    addonVM.isSelected.subscribe(onNext: {[weak self] isSelected in
+                        self?.calculateTotalPrice()
+                    }).disposed(by: addonVM.disposeBag)
+                }
+            }
+        }).disposed(by: disposeBag)
+        
+        totalPrice.map{"Add to Cart - SGD \($0)"}
+            .bind(to: displayedAddToChartText)
+            .disposed(by: disposeBag)
+    }
+    
+    private func calculateTotalPrice() {
+        // quantity * (base price + selected addons)
+        let selectedAddonsTotalPrice = addonCategories.value
+            .compactMap{$0.addons}
+            .flatMap{$0.value}
+            .filter{$0.isSelected.value}
+            .reduce(0, {$0 + $1.price})
+        totalPrice.accept((item.value.price + selectedAddonsTotalPrice) * Double(quantity.value))
+        
     }
     
     private func setupItemDetailUpdatedEvent() {
@@ -118,7 +163,8 @@ class DetailViewModel {
             .map{$0.addOnCategories}
             .map{addonCategories in
                 addonCategories.map{
-                    AddonCategoryViewModel.createModel(from: $0)
+                    let addonCategoryVM = AddonCategoryViewModel.createModel(from: $0)
+                    return addonCategoryVM
                 }
             }
             .bind(to: addonCategories)

@@ -24,7 +24,7 @@ class DetailViewModelTests: XCTestCase {
             "sugar",
             "rosemary",
             "bacon"
-        ], price: "SGD 3")
+        ], displayedPrice: "SGD 3", price: 3)
         
         expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
             let jsonData = getSampleJsonData()
@@ -106,22 +106,90 @@ class DetailViewModelTests: XCTestCase {
         })
     }
     
+    func test_selectAddons_totalPriceUpdated() {
+        let sut = makeSut()
+        let expectedNewItemViewModel = ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://i.picsum.photos/id/292/3852/2556.jpg?hmac=cPYEh0I48Xpek2DPFLxTBhlZnKVhQCJsbprR-Awl9lo", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: [
+            "flour",
+            "butter",
+            "egg",
+            "sugar",
+            "rosemary",
+            "bacon"
+        ], displayedPrice: "SGD 3", price: 3)
+
+        expect(sut, toCompleteWithItemStates: [makeItemViewModel(), expectedNewItemViewModel], when: {
+            let jsonData = getSampleJsonData()
+            URLProtocolStub.stub(data: jsonData, response: anyHTTPURLResponse(), error: nil)
+            sut.load()
+        })
+
+        expect(sut, toCompleteWithDisplayedAddToChartTextStates: ["Add to Cart - SGD 3.0", "Add to Cart - SGD 8.0", "Add to Cart - SGD 10.0"], when: {
+            
+            sut.addonCategories.value.last!.addons.value.last!.isSelected.accept(true)
+            sut.addonCategories.value.last!.addons.value.first!.isSelected.accept(true)
+
+        })
+    }
+    
     //MARK: Helpers
+    func expect(_ sut: DetailViewModel, toCompleteWithDisplayedAddToChartTextStates expectedDisplayedAddToChartTextStates:[String], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let expectationFullfillmentCount = expectedDisplayedAddToChartTextStates.count
+        let disposeBag = DisposeBag()
+        var capturedDisplayedAddToChartText:[String] = []
+        let exp = expectation(description: "wait for getting states")
+        exp.expectedFulfillmentCount = expectationFullfillmentCount
+        
+        sut.displayedAddToChartText.distinctUntilChanged().subscribe(onNext: {items in
+            capturedDisplayedAddToChartText.append(items)
+            exp.fulfill()
+        }, onError: {error in
+            XCTFail("unexpected error \(error)")
+        }).disposed(by: disposeBag)
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        //assertion
+        XCTAssertEqual(capturedDisplayedAddToChartText,expectedDisplayedAddToChartTextStates)
+    }
+    
+    func expect(_ sut: DetailViewModel, toCompleteWithisAddToChartEnabledStates isAddToChartEnabledStates:[Bool], when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        let expectationFullfillmentCount = isAddToChartEnabledStates.count
+        let disposeBag = DisposeBag()
+        var capturedIsAddToChartEnabled:[Bool] = []
+        let exp = expectation(description: "wait for getting states")
+        exp.expectedFulfillmentCount = expectationFullfillmentCount
+        
+        sut.isAddToChartEnabled.distinctUntilChanged().subscribe(onNext: {items in
+            capturedIsAddToChartEnabled.append(items)
+            exp.fulfill()
+        }, onError: {error in
+            XCTFail("unexpected error \(error)")
+        }).disposed(by: disposeBag)
+        
+        action()
+        wait(for: [exp], timeout: 1.0)
+        
+        //assertion
+        XCTAssertEqual(capturedIsAddToChartEnabled, isAddToChartEnabledStates)
+    }
+    
     private func makeSut() -> DetailViewModel {
         let itemDetailLoader = makeRemoteItemDetailLoader()
         let itemViewModel = makeItemViewModel()
         let sut = DetailViewModel(itemDetailLoader: itemDetailLoader, menuItem: itemViewModel)
+//        trackForMemoryLeaks(sut)
         return sut
     }
     
     private func makeItemViewModel() -> ItemViewModel {
-        ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://picsum.photos/id/1000/5626/3635", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: ["any","tags"], price: "3 SGD")
+        ItemViewModel(id: "6176686afc13ae4e76000004", name: "Rosemary and bacon cupcakes", imageUrl: "https://picsum.photos/id/1000/5626/3635", description: "Crumbly cupcakes made with dried rosemary and back bacon", tags: ["any","tags"], displayedPrice: "3 SGD", price: 3)
     }
     
     private func makeRemoteItemDetailLoader(file: StaticString = #filePath, line: UInt = #line) -> RemoteItemDetailLoader {
         let httpClient = makeHttpClient()
         let remoteMenuLoader = RemoteItemDetailLoader(httpClient: httpClient)
-        trackForMemoryLeaks(remoteMenuLoader, file: file, line: line)
+//        trackForMemoryLeaks(remoteMenuLoader, file: file, line: line)
         return remoteMenuLoader
     }
     
@@ -131,7 +199,7 @@ class DetailViewModelTests: XCTestCase {
         let session = URLSession(configuration: configuration)
         
         let sut = UrlSessionHttpClient(session: session)
-        trackForMemoryLeaks(sut, file: file, line: line)
+//        trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     
